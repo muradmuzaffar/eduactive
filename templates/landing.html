@@ -1,18 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="icons/css/all.min.css">
 
-{% load static %}
-<link rel="stylesheet" href="{%static 'css/landing.css'%}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
-<form method="get">
-    {% csrf_token %}
-    {{filters.form}}
-    <button type="submit">submit</button>
-</form>
+        <link rel="stylesheet" href="icons/css/fontawesome.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/5f665a6797.js" crossorigin="anonymous"></script>
+        
+    </head>
+</head>
+<body>
 
-{% for listing in filters.qs  %}
+    <header>
+        <input type="checkbox" id="toggler">
+        <label for="toggler" class="fas fa-bars"></label>
 
-{{listing.fee}}
 
 
-  
-{% endfor %}
-<h1>aa</h1>
+        <a href="#" class="logo">edu <span>active</span></a>
+
+        <nav class="navbar">
+            <a href="#home">Haqqimizda</a>
+            <a href="#programs">Təhsil Proqramları</a>
+            <a href="#scholarship">Təqaüd Proqramları</a>
+        </nav>
+         <button class="btn"><a href="#">Daxil Ol</a></button>
+        
+       </header>
+
+ 
+
+
+<section class="home">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+
+            <div class="detel">
+                <h3>Arzuladığın Universitet Bir<br>Toxunuş qədər sənə yaxın</h3>
+                <p>Təhsil və dil göstəricilərini daxil etməklə dünyanın ən məşhur<br>universitetlərinin proqramlarına qəbul olmaq şansını sına</p>
+            </div>
+
+            <div class="features">
+                <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <p>ÜOMG(GPA)</p>
+                        <input class="box"type="text" placeholder="/100">
+                      </div>
+                      <div class="col">
+                        <p>İELTS</p>
+                        <input class="box"type="text" placeholder="/9.0">
+                      </div>
+                      <div class="col">
+                        <p>TOEFL</p>
+                        <input class="box"type="text" placeholder="/120">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="container">
+                    <div class="row">
+                      <div class="col">
+                        <p>GRE</p>
+                        <input class="box"type="text" placeholder="/340">
+                      </div>
+                      <div class="col">
+                        <p>GMAT</p>
+                        <input class="box"type="text" placeholder="/800">
+                      </div>
+                      <div class="col">
+                        <p>Akademik Dərəcə</p>
+                            <input class="box" id = "dropdown"type="text" placeholder="Dərəcəni secin">
+                            <div id="text"></div>
+                    
+                            
+                            <ul id="list" class="hide">
+                                <li class="options">Bakalavriat</li>
+                                <li class="options">Magistratura</li>
+                                <li class="options">Doktorantura</li>
+                            </ul>
+                        </div>
+                      </div>
+                    </div>
+                  
+
+
+                    <div class="suggest">
+                        <div class="container">
+                            <div class="row">
+                              <div class="col">
+                                <div class="item1">
+                                <a href="#">Tehsil Proqramı Axtar</a>
+                             </div>
+                              </div>
+                              <div class="col">
+                                <div class="item2">
+                                <a href="#">Teqaüd Proqramı Axtar</a>
+                              </div>
+                             </div>
+                            </div>
+                          </div>
+                    </div>
+
+
+
+              
+            </div>
+
+
+        </div>
+       
+
+          <div class="col-sm">
+            <div class="images">
+                <img src="../pomorofon/images/imgbin_lingua-plus-university-of-mostar-2016-audi-a5-student-png.png" alt="" class="shape">
+                <img src="" alt="" class="girl">
+            </div>
+          </div>
+        
+        </div>
+           
+
+    
+
+</section>
+
+<section class="education">
+    <div class="heading">Dunyaca meshur universitetlerde <br> Tehsil almaq sansi</div>
+                            
+   <div class="swiper mySwiper slider">
+
+    <div class="swiper-wrapper cardBox">
+      
+      <div class="swiper-slide card">
+        <div class="cardImage">
+          <img src="" alt="">
+        </div>
+            
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <div class="imgLogo"><img src="" alt=""></div>
+                <div class="rate">
+              <p>21%</p>
+              <h2>Qebul faizi</h2></div>
+            </div>
+            <div class="col-sm" id="col2">  
+                  <h1>Harvard Universiteti</h1>
+                  <h3><i class="fas fa-map-marker-alt"></i>Kembric,Boyuk Britaniya</h3>
+                  <p class="txt">esas ixtisaslasma</p>
+                  <div class="info">
+                    <div class="pro1">
+                        <i class="fa-solid fa-user"></i>
+                        <p>sosial elmler</p>
+                    </div>
+                    <div class="pro2">
+                        <i class="fa-solid fa-chart-line-up"></i>
+                        <p>Iqtisadiyyat ve biznes menecment</p>
+                    </div>
+                 </div>
+
+            </div>
+         </div>
+        
+        </div>
+      </div>
+      
+
+
+
+      <div class="swiper-slide card">
+        <div class="cardImage">
+          <img src="" alt="">
+        </div>
+            
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <div class="imgLogo"><img src="" alt=""></div>
+                <div class="rate">
+              <p>21%</p>
+              <h2>Qebul faizi</h2></div>
+            </div>
+            <div class="col-sm" id="col2">  
+                  <h1>Harvard Universiteti</h1>
+                  <h3><i class="fas fa-map-marker-alt"></i>Kembric,Boyuk Britaniya</h3>
+                  <p class="txt">esas ixtisaslasma</p>
+                  <div class="info">
+                    <div class="pro1">
+                        <i class="fa-solid fa-user"></i>
+                        <p>sosial elmler</p>
+                    </div>
+                    <div class="pro2">
+                        <i class="fa-solid fa-chart-line-up"></i>
+                        <p>Iqtisadiyyat ve biznes menecment</p>
+                    </div>
+                 </div>
+
+            </div>
+          </div>
+         </div>
+        </div>
+
+
+
+        <div class="swiper-slide card">
+          <div class="cardImage">
+            <img src="" alt="">
+          </div>
+              
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <div class="imgLogo"><img src="" alt=""></div>
+                  <div class="rate">
+                <p>21%</p>
+                <h2>Qebul faizi</h2></div>
+              </div>
+              <div class="col-sm" id="col2">  
+                    <h1>Harvard Universiteti</h1>
+                    <h3><i class="fas fa-map-marker-alt"></i>Kembric,Boyuk Britaniya</h3>
+                    <p class="txt">esas ixtisaslasma</p>
+                    <div class="info">
+                      <div class="pro1">
+                          <i class="fa-solid fa-user"></i>
+                          <p>sosial elmler</p>
+                      </div>
+                      <div class="pro2">
+                          <i class="fa-solid fa-chart-line-up"></i>
+                          <p>Iqtisadiyyat ve biznes menecment</p>
+                      </div>
+                   </div>
+              </div>
+           </div>
+          </div>
+        </div>  
+    </div> 
+    
+      <div class="swiper-button-next"></div>
+   <div class="swiper-button-prev"></div>
+   </div>
+
+
+
+</section>
+
+
+<section class="proposal">
+             <div class="heading">Niye Educative?</div>   
+        <div class="proposal-sec">
+                  <div class="proBox">
+                      <div class="proIcon"><i class="fa-regular fa-hourglass-clock"></i></i></div>
+                      <h2>hghghg</h2>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste fuga, enim ducimus molestiae repudiandae alias placeat fugit voluptatibus rerum error aliquid unde magni dicta nihil illo blanditiis sunt aliquam totam.</p>
+                  </div>
+
+                  <div class="proBox">
+                    <div class="proIcon"><i class="fa-regular fa-graduation-cap"></i></i></div>
+                    <h2>hghghg</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste fuga, enim ducimus molestiae repudiandae alias placeat fugit voluptatibus rerum error aliquid unde magni dicta nihil illo blanditiis sunt aliquam totam.</p>
+                </div>
+
+                <div class="proBox">
+                  <div class="proIcon"><i class="fa-solid fa-check"></i></div>
+                  <h2>hghghg</h2>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste fuga, enim ducimus molestiae repudiandae alias placeat fugit voluptatibus rerum error aliquid unde magni dicta nihil illo blanditiis sunt aliquam totam.</p>
+              </div>
+          </div>
+        </section>
+
+
+  <section class="footer">
+
+    <p class="logo">edu<span>active</span></p>
+    <h2>ghnfnfghmfmhfhmyfhmygf</h2>
+
+  </section>      
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+</html>
