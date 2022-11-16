@@ -1,3 +1,7 @@
+
+{% load static %}
+<link rel="stylesheet" href="{%static 'css/landing.css'%}">
+
 <form method="get">
     {% csrf_token %}
     {{filters.form}}
@@ -7,5 +11,8 @@
 {% for listing in filters.qs  %}
 
 {{listing.fee}}
+
+
   
 {% endfor %}
+<h1>aa</h1>
