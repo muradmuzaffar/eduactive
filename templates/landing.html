@@ -1,0 +1,11 @@
+<form method="get">
+    {% csrf_token %}
+    {{filters.form}}
+    <button type="submit">submit</button>
+</form>
+
+{% for listing in filters.qs  %}
+
+{{listing.fee}}
+  
+{% endfor %}
