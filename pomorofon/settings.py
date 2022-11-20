@@ -45,7 +45,8 @@ INSTALLED_APPS = [
 
 
     'import_export',
-    'django_filters'
+    'django_filters',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

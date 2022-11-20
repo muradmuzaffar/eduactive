@@ -10,6 +10,17 @@ VAIWER_CHOICES = [
 
 ]
 
+EVALUATION_CHOICES = [
+    ("Very Difficult; Great", ("Very Difficult; Great")),
+    ("Not Difficult; Great", ("Not Difficult; Great")),
+    ("Mid Difficult; Great", ("Mid Difficult; Great")),
+    ("Easy; Not Good", ("Easy; Not Good")),
+    ("Easy; Okay", ("Easy; Okay")),
+    ("Difficult; Okay", ("Difficult; Okay")),
+    ("Difficult; Great", ("Difficult; Great")),
+
+]
+
 
 class University(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
@@ -42,7 +53,7 @@ class University(models.Model):
     dedline = models.CharField(max_length=500, blank=True, null=True)
     result = models.CharField(max_length=500, blank=True, null=True)
     link = models.CharField(max_length=200, blank=True, null=True)
-    evaluation = models.CharField(max_length=500, blank=True, null=True)
+    evaluation = models.CharField(max_length=500, blank=True, null=True,choices=EVALUATION_CHOICES)
 
     def __str__(self) -> str:
         return self.name
