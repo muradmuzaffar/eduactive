@@ -53,7 +53,35 @@ class University(models.Model):
     dedline = models.CharField(max_length=500, blank=True, null=True)
     result = models.CharField(max_length=500, blank=True, null=True)
     link = models.CharField(max_length=200, blank=True, null=True)
-    evaluation = models.CharField(max_length=500, blank=True, null=True,choices=EVALUATION_CHOICES)
+    evaluation = models.CharField(
+        max_length=500, blank=True, null=True, choices=EVALUATION_CHOICES)
 
     def __str__(self) -> str:
         return self.name
+
+
+RESEARCH_CHOICES = [
+    ("0", ("0")),
+    ("1", ("1")),
+
+]
+
+RATING_CHOICES = [
+    ("1", ("1")),
+    ("2", ("2")),
+    ("3", ("3")),
+    ("4", ("4")),
+    ("5", ("5")),
+
+]
+
+
+class Admission(models.Model):
+    gre = models.IntegerField()
+    toefl = models.IntegerField()
+    sop = models.FloatField()
+    lor = models.FloatField()
+    gpa = models.FloatField()
+    admit_chance = models.FloatField()
+    research = models.CharField(max_length=20, choices=RESEARCH_CHOICES)
+    rating = models.CharField(max_length=20, choices=RATING_CHOICES)

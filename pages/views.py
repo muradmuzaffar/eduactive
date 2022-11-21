@@ -1,6 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import University
+from .models import University, Admission
 from .filters import ListingFiLters
+from .forms import AdmissionForm
+import pandas as pd
+import numpy as np
 # Create your views here.
 
 
@@ -27,8 +30,70 @@ def filters(request,):
 
     context = {
         'filters': filters,
-        'form':filters.form,
+        'form': filters.form,
         # 'university':university,
     }
 
     return render(request, 'filters.html', context)
+
+
+def admission(request):
+    form = AdmissionForm(request.POST or None)
+    if request.method == 'POST':
+        form = AdmissionForm(request.POST)
+        if form.is_valid():
+            gre = form.cleaned_data['gre']
+            gpa = form.cleaned_data['gpa']
+            lor = form.cleaned_data['lor']
+            sop = form.cleaned_data['sop']
+            research = form.cleaned_data['research']
+            rating = form.cleaned_data['rating']
+            toefl = form.cleaned_data['toefl']
+
+            inputs = pd.DataFrame({'gre': gre,
+                                   'toefl': toefl,
+                                   'university_rating': rating,
+                                   'sop': sop,
+                                   'lor': lor,
+                                   'gpa': gpa,
+                                   'research': research,
+
+                                   },  index=[0])
+            print(inputs)
+            print('****************************')
+
+            model = pd.read_pickle('./Model Design/model.pkl')
+
+            data = pd.read_csv('./Model Design/admission_data.csv',
+                               index_col=0).drop(columns=['admit_chance '])
+            print(data)
+            print('****************************')
+            df = pd.concat([inputs, data], axis=0)
+            print(df)
+            print('****************************')
+
+            encode = ['research', 'university_rating']
+            for col in encode:
+                dummy = pd.get_dummies(df[col], prefix=col)
+                df = pd.concat([df, dummy], axis=1)
+                del df[col]
+            df = df[:1]
+            del df['lor ']
+            df.columns = np.unique(df.columns)
+
+            print(df)
+            print('****************************')
+            # print(df.columns)
+            # df['salary_in_usd'] = df['salary_in_usd'].apply(
+            #     pd.to_numeric).astype('Int64')
+            # df = df.loc[:, ~df.columns.duplicated()].copy()
+
+            # global pred
+            pred = model.predict(df)
+            # PredResults.objects.create(
+            #     experience=inputs['experience_level'], company_size=inputs['company_size'],
+            #     remote=inputs['remote_ratio'], job_title=inputs['job_title'])
+
+        return render(request, 'admission.html', {"pred": pred})
+    else:
+        return render(request, 'admission.html', {'form': form})
