@@ -65,7 +65,7 @@ def admission(request):
             model = pd.read_pickle('./Model Design/model.pkl')
 
             data = pd.read_csv('./Model Design/admission_data.csv',
-                               index_col=0).drop(columns=['admit_chance '])
+                               index_col=0).drop(columns=['admit_chance']).reset_index()
             print(data)
             print('****************************')
             df = pd.concat([inputs, data], axis=0)
@@ -78,21 +78,19 @@ def admission(request):
                 df = pd.concat([df, dummy], axis=1)
                 del df[col]
             df = df[:1]
-            del df['lor ']
-            df.columns = np.unique(df.columns)
-
+            # del df['lor']
+            # df.columns = np.unique(df.columns)
+            df = df.loc[:,~df.columns.duplicated()].copy()
+            
+            print('****************************')
             print(df)
             print('****************************')
-            # print(df.columns)
-            # df['salary_in_usd'] = df['salary_in_usd'].apply(
-            #     pd.to_numeric).astype('Int64')
-            # df = df.loc[:, ~df.columns.duplicated()].copy()
 
-            # global pred
+
+        
             pred = model.predict(df)
-            # PredResults.objects.create(
-            #     experience=inputs['experience_level'], company_size=inputs['company_size'],
-            #     remote=inputs['remote_ratio'], job_title=inputs['job_title'])
+            print(pred)
+            
 
         return render(request, 'admission.html', {"pred": pred})
     else:

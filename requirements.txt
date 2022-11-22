@@ -1,0 +1,8 @@
+django-import-export
+django-crispy-forms
+django-filter
+pandas
+sklearn
+skicit-learn 
+scipy
+matplotlib
