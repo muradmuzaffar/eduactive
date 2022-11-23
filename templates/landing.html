@@ -71,10 +71,10 @@ https://templatemo.com/tm-569-edu-meeting
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
                           <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                          <li><a href="{%url 'filters'%}">Filters</a></li>
+                          <!-- <li><a href="{%url 'filters'%}">Filters</a></li> -->
                           <li class="scroll-to-section"><a href="#apply">Apply Now</a></li>
                           
-                          <li class="scroll-to-section"><a href="#courses">Universities</a></li> 
+                          <li class="scroll-to-section"><a href="{%url 'filters' %}">Universities</a></li> 
                           <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
                           {% if user.is_authenticated %}
                           <li class="has-sub">
@@ -378,6 +378,7 @@ https://templatemo.com/tm-569-edu-meeting
             <h2>All Universities</h2>
           </div>
         </div>
+        
         <div class="col-lg-12">
           <div class="owl-courses-item owl-carousel">
             {% for university in universitys %}

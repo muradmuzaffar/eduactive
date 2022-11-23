@@ -4,15 +4,16 @@ from .filters import ListingFiLters
 from .forms import AdmissionForm
 import pandas as pd
 import numpy as np
+from sklearn.ensemble import RandomForestRegressor
+import pickle
 # Create your views here.
 
 
 def landing(request):
     universitys = University.objects.all()
-    # filters = ListingFiLters(request.GET,queryset=universitys)
 
     context = {
-        'universitys': universitys
+        'universitys': universitys,
     }
 
     return render(request, 'landing.html', context)
