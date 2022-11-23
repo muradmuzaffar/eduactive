@@ -4,7 +4,7 @@ from .filters import ListingFiLters
 from .forms import AdmissionForm
 import pandas as pd
 import numpy as np
-# from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor
 import pickle
 # Create your views here.
 
