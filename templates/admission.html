@@ -3,6 +3,16 @@
 
 {% block main %}
 
+<style>
+  .d-flex{
+    margin: 100px 0;
+  }
+  label{
+    margin-bottom: 15px;
+    margin-top: 30px;
+  }
+</style>
+
 {% load crispy_forms_tags %}
 <div class="d-flex  justify-content-center">
    <form method="post">
@@ -12,25 +22,53 @@
      {% if not pred %}
 
      
-     <button type="submit" class="btn btn-primary" >
+     <button type="submit" class="btn btn-primary mt-4" >
        Estimate
      </button>  
      {% endif %}
    </form>
  </div>
  
- {% if pred %}
+ {% if pred and pred > 0.5 %}
  
 <div class="d-flex  justify-content-center">
  <div>
-   <h3>Salary: </h3> 
-   <h1>  {{pred}} USD</h1>
+   <h1>Result: </h1> 
+   <h3>  {{pred}} </h3>
+   <p>You have a good chance</p>
  </div>
 
 </div>
+
+
  
  
    
  {% endif %}
+
+
+
+
+
+ {% if pred and pred < 0.5 %}
+ 
+<div class="d-flex  justify-content-center">
+ <div>
+   <h1>Result: </h1> 
+   <h3>  {{pred}} USD</h3>
+   <p>You do not have a good chance</p>
+ </div>
+
+</div>
+
+
+ 
+ 
+   
+ {% endif %}
+
+
+
+
   
 {% endblock main %}

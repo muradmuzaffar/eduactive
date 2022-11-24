@@ -10,7 +10,7 @@ import pickle
 
 
 def landing(request):
-    universitys = University.objects.all()
+    universitys = University.objects.all().order_by('-id')[0:20]
 
     context = {
         'universitys': universitys,

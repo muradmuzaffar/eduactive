@@ -70,12 +70,9 @@ https://templatemo.com/tm-569-edu-meeting
                       <!-- ***** Logo End ***** -->
                       <!-- ***** Menu Start ***** -->
                       <ul class="nav">
-                          <li><a href="index.html">Home</a></li>
-                          <li><a href="{%url 'filters'%}">Filters</a></li>
-                          <!-- <li><a href="index.html">Apply Now</a></li>
-                          
-                          <li><a href="index.html">Courses</a></li> 
-                          <li><a href="index.html">Contact Us</a></li>  -->
+                          <li><a href="{%url 'landing'%}">Home</a></li>
+                          <li><a href="{%url 'filters'%}">Universities</a></li>
+                          <li><a href="{%url 'admission' %}">Prediction</a></li>
                           {% if user.is_authenticated %}
                           <li class="has-sub">
                             <a href="javascript:void(0)">{{user.username}}</a>
