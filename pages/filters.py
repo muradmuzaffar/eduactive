@@ -9,5 +9,6 @@ class ListingFiLters(django_filters.FilterSet):
         fields = {
             'fee_waiver': ['exact'],
             'evaluation':  ['exact'],
+            'degree':  ['exact'],
             
         }

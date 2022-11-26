@@ -10,6 +10,14 @@ VAIWER_CHOICES = [
 
 ]
 
+
+DEGREE_CHOICES = [
+    ("Bachelor", ("Bachelor")),
+    ("Master", ("Master")),
+    ("Ph.D.", ("Ph.D."))
+
+]
+
 EVALUATION_CHOICES = [
     ("Very Difficult; Great", ("Very Difficult; Great")),
     ("Not Difficult; Great", ("Not Difficult; Great")),
@@ -24,11 +32,15 @@ EVALUATION_CHOICES = [
 
 class University(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
-    qs = models.CharField(max_length=50, blank=True, null=True)
-    us = models.CharField(max_length=50, blank=True, null=True)
-    public = models.CharField(max_length=50, blank=True, null=True)
+    qs_rank = models.CharField(max_length=50, blank=True, null=True)
+
+    region_rank = models.CharField(max_length=50, blank=True, null=True)
+    program_rank_world = models.CharField(max_length=50, blank=True, null=True)
+    program_rank_region = models.CharField(max_length=50, blank=True, null=True)
+    program_rank_state = models.CharField(max_length=50, blank=True, null=True)
+    
     program = models.CharField(max_length=100, blank=True, null=True)
-    degree = models.CharField(max_length=100, blank=True, null=True)
+    degree = models.CharField(max_length=100, blank=True, null=True,choices=DEGREE_CHOICES)
     study_duration = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True, null=True)
     other_email = models.EmailField(max_length=254, blank=True, null=True)
@@ -41,20 +53,27 @@ class University(models.Model):
     fee_waiver = models.CharField(
         max_length=100, blank=True, null=True, choices=VAIWER_CHOICES)
     tutaion_fee = models.CharField(max_length=100, blank=True, null=True)
-    admission_req = models.CharField(max_length=300, blank=True, null=True)
+    admission_req = models.CharField(max_length=3000, blank=True, null=True)
+    bio = models.CharField(max_length=3000, blank=True, null=True)
     state = models.CharField(max_length=100, blank=True, null=True)
     city = models.CharField(max_length=100, blank=True, null=True)
+
+    city_living_cost = models.CharField(max_length=100, blank=True, null=True)
+
+    
+
     acceptance_rate = models.CharField(max_length=100, blank=True, null=True)
     graduation_rate = models.CharField(max_length=100, blank=True, null=True)
 
-    # scholarship = models.CharField(max_length=500, blank=True, null=True)
-    # scholarship_size = models.CharField(max_length=500, blank=True, null=True)
-    # scholarship_req = models.CharField(max_length=500, blank=True, null=True)
+    
     dedline = models.CharField(max_length=500, blank=True, null=True)
     result = models.CharField(max_length=500, blank=True, null=True)
     link = models.CharField(max_length=200, blank=True, null=True)
     evaluation = models.CharField(
         max_length=500, blank=True, null=True, choices=EVALUATION_CHOICES)
+
+
+    
 
     def __str__(self) -> str:
         return self.name

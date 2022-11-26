@@ -121,10 +121,13 @@ https://templatemo.com/tm-569-edu-meeting
                 <div class="caption">
               <h6>Hello Students</h6>
               <h2>Welcome to EduActive</h2>
-              <p>This is an edu meeting HTML CSS template provided by <a rel="nofollow" href="https://templatemo.com/page/1" target="_blank">TemplateMo website</a>. This is a Bootstrap v5.1.3 layout. The video background is taken from Pexels website, a group of young people by <a rel="nofollow" href="https://www.pexels.com/@pressmaster" target="_blank">Pressmaster</a>.</p>
+              <p>This is an education platform provided by <b>LighSpeed</b> team. This is a Bootstrap v5.1.3 layout. Check universities and enjoy the appliying process</p>
+              
+              {%if user.is_authenticated == False%}
               <div class="main-button-red">
-                  <div class="scroll-to-section"><a href="#contact">Join Us Now!</a></div>
+                  <div ><a href="{%url 'log_in' %}">Join Us Now!</a></div>
               </div>
+              {%endif%}
           </div>
               </div>
             </div>
@@ -361,38 +364,41 @@ https://templatemo.com/tm-569-edu-meeting
         <div class="col-lg-12">
           <div class="owl-courses-item owl-carousel">
             {% for university in universitys %}
-            <div class="item">
-              <!-- <img src="{% static 'assets/images/course-01.jpg' %}" alt="Course One"> -->
-              
-              <div class="down-content">
+
+            {% if university.bio|length > 200 %}
+              <div class="item">
+                <!-- <img src="{% static 'assets/images/course-01.jpg' %}" alt="Course One"> -->
                 
-                <a href="{%url 'detail' university.id %}"><h4>{{university.name}}</h4></a>
-                <div class="info">
-                  <div class="row">
-                    <div class="col-12">
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias placeat, ipsum beatae id non odio eos et error vero laudantium ea quo repudiandae consequatur, laborum perferendis consequuntur porro ad dolorum?
-                      </p>
+                <div class="down-content">
+                  
+                  <a href="{%url 'detail' university.id %}"><h4>{{university.name}}</h4></a>
+                  <div class="info">
+                    <div class="row">
+                      <div class="col-12">
+                        <p>
+                          {{university.bio | truncatewords:50}}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="info">
+                    <div class="row">
+                      <div class="col-4">
+                        Fee: <span>${{university.fee}}</span>
+                      </div>
+                      <div class="col-4">
+                        Qs:<span> {{university.qs}}</span>
+                    </div>
+                    <div class="col-4">
+                      Us:<span> {{university.us}}</span>
+                  </div>
                     </div>
                   </div>
                 </div>
                 
-                <div class="info">
-                  <div class="row">
-                    <div class="col-4">
-                       Fee: <span>${{university.fee}}</span>
-                    </div>
-                    <div class="col-4">
-                      Qs:<span> {{university.qs}}</span>
-                   </div>
-                   <div class="col-4">
-                    Us:<span> {{university.us}}</span>
-                 </div>
-                  </div>
-                </div>
               </div>
-              
-            </div>
+            {% endif %}
               
             {% endfor %}
            
@@ -519,8 +525,8 @@ https://templatemo.com/tm-569-edu-meeting
       </div>
     </div>
     <div class="footer">
-      <p>Copyright © 2022 Edu Meeting Co., Ltd. All Rights Reserved. 
-          <br>Design: <a href="https://templatemo.com" target="_parent" title="free css templates">TemplateMo</a></p>
+      <p>Copyright © 2022 EduActive Co., Ltd. All Rights Reserved. 
+          
     </div>
     
   </section>
