@@ -104,3 +104,14 @@ class Admission(models.Model):
     admit_chance = models.FloatField()
     research = models.CharField(max_length=20, choices=RESEARCH_CHOICES)
     rating = models.CharField(max_length=20, choices=RATING_CHOICES)
+
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    subject = models.CharField(max_length=100)
+    message = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name

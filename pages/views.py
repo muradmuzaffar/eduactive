@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404,redirect
 from .models import University, Admission
 from .filters import ListingFiLters
-from .forms import AdmissionForm
+from .forms import AdmissionForm,ContactForm
 import pandas as pd
 import numpy as np
 # from sklearn.ensemble import RandomForestRegressor
@@ -12,8 +12,20 @@ import pickle
 def landing(request):
     universitys = University.objects.all()[0:20]
 
+
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        print(form)
+        if form.is_valid():
+            print(form)
+            form.save()
+            return redirect("landing")
+
+    form = ContactForm()
+
     context = {
         'universitys': universitys,
+        'form':form
     }
 
     return render(request, 'landing.html', context)

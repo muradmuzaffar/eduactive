@@ -1,5 +1,5 @@
 from django import forms
-from .models import Admission
+from .models import Admission,Contact
 
 class AdmissionForm(forms.ModelForm):
     class Meta:
@@ -14,3 +14,31 @@ class AdmissionForm(forms.ModelForm):
             'research':'Research Experience ( either 0 or 1 )',
             'rating':'University Rating ( out of 5 )',
         }
+
+
+
+
+class ContactForm(forms.ModelForm):
+    name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Name',
+        'id':'name'
+    }))
+    subject = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Surname',
+        'id':'subject'
+
+    }))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'placeholder': 'Email',
+        'id':'email'
+    }))
+    message = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'Message',
+        'id':'message'
+
+    }))
+
+    class Meta:
+        model = Contact
+        fields = ['name', 'subject',
+                  'email', 'message']
