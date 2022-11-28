@@ -1,0 +1,1 @@
+web: gunicorn pomorofon.wsgi --log-file -
