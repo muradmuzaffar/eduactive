@@ -2,10 +2,10 @@ from django.shortcuts import render, get_object_or_404,redirect
 from .models import University, Admission
 from .filters import ListingFiLters
 from .forms import AdmissionForm,ContactForm
-import pandas as pd
-import numpy as np
+# import pandas as pd
+# import numpy as np
 # from sklearn.ensemble import RandomForestRegressor
-import pickle
+# import pickle
 # Create your views here.
 
 
@@ -63,48 +63,57 @@ def admission(request):
             rating = form.cleaned_data['rating']
             toefl = form.cleaned_data['toefl']
 
-            inputs = pd.DataFrame({'gre': gre,
-                                   'toefl': toefl,
-                                   'university_rating': rating,
-                                   'sop': sop,
-                                   'lor': lor,
-                                   'gpa': gpa,
-                                   'research': research,
+            result_1 =  gpa*0.1+lor*0.2+sop*0.2
+            result_2 = (gre/340) + (toefl/120)
+            result_3 = float(research) - float(rating)*0.2
+            print('***************************')
 
-                                   },  index=[0])
-            print(inputs)
-            print('****************************')
+            final_result = (round((result_1+result_2+result_3) / 7 , 2)) 
+            print('***************************')
 
-            model = pd.read_pickle('./Model Design/model.pkl')
 
-            data = pd.read_csv('./Model Design/admission_data.csv',
-                               index_col=0).drop(columns=['admit_chance']).reset_index()
-            print(data)
-            print('****************************')
-            df = pd.concat([inputs, data], axis=0)
-            print(df)
-            print('****************************')
+            # inputs = pd.DataFrame({'gre': gre,
+            #                        'toefl': toefl,
+            #                        'university_rating': rating,
+            #                        'sop': sop,
+            #                        'lor': lor,
+            #                        'gpa': gpa,
+            #                        'research': research,
 
-            encode = ['research', 'university_rating']
-            for col in encode:
-                dummy = pd.get_dummies(df[col], prefix=col)
-                df = pd.concat([df, dummy], axis=1)
-                del df[col]
-            df = df[:1]
-            # del df['lor']
-            # df.columns = np.unique(df.columns)
-            df = df.loc[:,~df.columns.duplicated()].copy()
+            #                        },  index=[0])
+            # # print(inputs)
+            # # print('****************************')
+
+            # model = pd.read_pickle('./Model Design/model.pkl')
+
+            # data = pd.read_csv('./Model Design/admission_data.csv',
+            #                    index_col=0).drop(columns=['admit_chance']).reset_index()
+            # # print(data)
+            # # print('****************************')
+            # df = pd.concat([inputs, data], axis=0)
+            # # print(df)
+            # # print('****************************')
+
+            # encode = ['research', 'university_rating']
+            # for col in encode:
+            #     dummy = pd.get_dummies(df[col], prefix=col)
+            #     df = pd.concat([df, dummy], axis=1)
+            #     del df[col]
+            # df = df[:1]
+            # # del df['lor']
+            # # df.columns = np.unique(df.columns)
+            # df = df.loc[:,~df.columns.duplicated()].copy()
             
-            print('****************************')
-            print(df)
-            print('****************************')
+            # # print('****************************')
+            # # print(df)
+            # # print('****************************')
 
 
         
-            pred = model.predict(df)
-            print(pred)
+            # pred = model.predict(df)
+            # # print(pred)
             
 
-        return render(request, 'admission.html', {"pred": pred})
+        return render(request, 'admission.html', {"pred": final_result})
     else:
         return render(request, 'admission.html', {'form': form})
