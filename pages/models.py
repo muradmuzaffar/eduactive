@@ -14,18 +14,28 @@ VAIWER_CHOICES = [
 DEGREE_CHOICES = [
     ("Bachelor", ("Bachelor")),
     ("Master", ("Master")),
-    ("Ph.D.", ("Ph.D."))
+    ("Ph.D.", ("Ph.D.")),
+    ("Exchange programme", ("Exchange programme")),
+    ("Training programme", ("Training programme"))
 
 ]
 
-EVALUATION_CHOICES = [
-    ("Very Difficult; Great", ("Very Difficult; Great")),
-    ("Not Difficult; Great", ("Not Difficult; Great")),
-    ("Mid Difficult; Great", ("Mid Difficult; Great")),
-    ("Easy; Not Good", ("Easy; Not Good")),
-    ("Easy; Okay", ("Easy; Okay")),
-    ("Difficult; Okay", ("Difficult; Okay")),
-    ("Difficult; Great", ("Difficult; Great")),
+# EVALUATION_CHOICES = [
+#     ("Very Difficult; Great", ("Very Difficult; Great")),
+#     ("Not Difficult; Great", ("Not Difficult; Great")),
+#     ("Mid Difficult; Great", ("Mid Difficult; Great")),
+#     ("Easy; Not Good", ("Easy; Not Good")),
+#     ("Easy; Okay", ("Easy; Okay")),
+#     ("Difficult; Okay", ("Difficult; Okay")),
+#     ("Difficult; Great", ("Difficult; Great")),
+
+# ]
+
+REGION_CHOICES = [
+    ("EU", ("EU")),
+    ("US", ("US")),
+    ("UK", ("UK")),
+    ("non-EU", ("non-EU")),
 
 ]
 
@@ -33,12 +43,10 @@ EVALUATION_CHOICES = [
 class University(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     qs_rank = models.CharField(max_length=50, blank=True, null=True)
-
-    region_rank = models.CharField(max_length=50, blank=True, null=True)
-    program_rank_world = models.CharField(max_length=50, blank=True, null=True)
-    program_rank_region = models.CharField(max_length=50, blank=True, null=True)
-    program_rank_state = models.CharField(max_length=50, blank=True, null=True)
-    
+    # region_rank = models.CharField(max_length=50, blank=True, null=True)
+    # program_rank_world = models.CharField(max_length=50, blank=True, null=True)
+    # program_rank_region = models.CharField(max_length=50, blank=True, null=True)
+    # program_rank_state = models.CharField(max_length=50, blank=True, null=True) 
     program = models.CharField(max_length=100, blank=True, null=True)
     degree = models.CharField(max_length=100, blank=True, null=True,choices=DEGREE_CHOICES)
     study_duration = models.CharField(max_length=100, blank=True, null=True)
@@ -50,33 +58,28 @@ class University(models.Model):
     toefl = models.CharField(max_length=100, blank=True, null=True)
     gmat = models.CharField(max_length=100, blank=True, null=True)
     fee = models.CharField(max_length=100, blank=True, null=True)
-    fee_waiver = models.CharField(
-        max_length=100, blank=True, null=True, choices=VAIWER_CHOICES)
+    fee_waiver = models.CharField(max_length=100, blank=True, null=True, choices=VAIWER_CHOICES)
     tutaion_fee = models.CharField(max_length=100, blank=True, null=True)
-    admission_req = models.CharField(max_length=3000, blank=True, null=True)
-    bio = models.CharField(max_length=3000, blank=True, null=True)
+    region = models.CharField(max_length=100, blank=True, null=True,choices=REGION_CHOICES)
     state = models.CharField(max_length=100, blank=True, null=True)
     city = models.CharField(max_length=100, blank=True, null=True)
-
     city_living_cost = models.CharField(max_length=100, blank=True, null=True)
-
-    
-
     acceptance_rate = models.CharField(max_length=100, blank=True, null=True)
-    graduation_rate = models.CharField(max_length=100, blank=True, null=True)
-
     
+    
+    graduation_rate = models.CharField(max_length=100, blank=True, null=True)  
     dedline = models.CharField(max_length=500, blank=True, null=True)
     result = models.CharField(max_length=500, blank=True, null=True)
     link = models.CharField(max_length=200, blank=True, null=True)
-    evaluation = models.CharField(
-        max_length=500, blank=True, null=True, choices=EVALUATION_CHOICES)
+    # evaluation = models.CharField(max_length=500, blank=True, null=True, choices=EVALUATION_CHOICES)
+    bio = models.CharField(max_length=3000, blank=True, null=True)
+
 
 
     
 
-    def __str__(self) -> str:
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
 
 RESEARCH_CHOICES = [

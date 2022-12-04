@@ -8,7 +8,7 @@ class ListingFiLters(django_filters.FilterSet):
         model = University
         fields = {
             'fee_waiver': ['exact'],
-            'evaluation':  ['exact'],
+            'region':  ['exact'],
             'degree':  ['exact'],
             
         }

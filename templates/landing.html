@@ -250,7 +250,7 @@
           <div class="owl-courses-item owl-carousel">
             {% for university in universitys %}
 
-            {% if university.bio|length > 200 %}
+            {% if university.bio|length > 200  and university.program|length < 25%}
               <div class="item">
                 <!-- <img src="{% static 'assets/images/course-01.jpg' %}" alt="Course One"> -->
                 
@@ -270,13 +270,13 @@
                   <div class="info">
                     <div class="row">
                       <div class="col-4">
-                        Fee: <span>${{university.fee}}</span>
+                        Degree: <span>{{university.degree}}</span>
                       </div>
                       <div class="col-4">
-                        Qs:<span> #{{university.qs_rank}}</span>
+                        Program:<span> {{university.program}}</span>
                     </div>
                     <div class="col-4">
-                      Us:<span> #{{university.program_rank_world}}</span>
+                      Fee:<span> ${{university.fee}}</span>
                   </div>
                     </div>
                   </div>

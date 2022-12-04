@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404,redirect
 from .models import University, Admission
 from .filters import ListingFiLters
 from .forms import AdmissionForm,ContactForm
+from django.contrib.auth.decorators import login_required
+
 # import pandas as pd
 # import numpy as np
 # from sklearn.ensemble import RandomForestRegressor
@@ -10,7 +12,7 @@ from .forms import AdmissionForm,ContactForm
 
 
 def landing(request):
-    universitys = University.objects.all()[0:20]
+    universitys = University.objects.all()
 
 
     if request.method == "POST":
@@ -30,7 +32,7 @@ def landing(request):
 
     return render(request, 'landing.html', context)
 
-
+@login_required(login_url = 'log_in')
 def detail(request, id):
     university = get_object_or_404(University, id=id)
     return render(request, 'detail.html', {'university': university})
