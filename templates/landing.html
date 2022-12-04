@@ -25,6 +25,15 @@
   </head>
 
 <style>
+  .item{
+    transition: 0.5s all ease-in-out;
+
+  }
+
+  .item:hover{
+    transform: scale(1.1); 
+    cursor:pointer
+  }
 
   
   
@@ -46,7 +55,6 @@
             <ul>
               <li><a href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-              <li><a href="#"><i class="fa fa-behance"></i></a></li>
               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
             </ul>
           </div>
@@ -62,7 +70,7 @@
               <div class="col-12">
                   <nav class="main-nav">
                       <!-- ***** Logo Start ***** -->
-                      <a href="index.html" class="logo">
+                      <a href="{% url 'landing' %}" class="logo">
                           EduActive
                       </a>
                       <!-- ***** Logo End ***** -->
@@ -251,12 +259,13 @@
             {% for university in universitys %}
 
             {% if university.bio|length > 200  and university.program|length < 25%}
+            <a href="{%url 'detail' university.id %}">
               <div class="item">
                 <!-- <img src="{% static 'assets/images/course-01.jpg' %}" alt="Course One"> -->
                 
                 <div class="down-content">
                   
-                  <a href="{%url 'detail' university.id %}"><h4>{{university.name}}</h4></a>
+                  <h4>{{university.name}}</h4>
                   <div class="info">
                     <div class="row">
                       <div class="col-12">
@@ -269,13 +278,13 @@
                   
                   <div class="info">
                     <div class="row">
-                      <div class="col-4">
+                      <div style = 'color:black' class="col-4">
                         Degree: <span>{{university.degree}}</span>
                       </div>
-                      <div class="col-4">
+                      <div style = 'color:black' class="col-4">
                         Program:<span> {{university.program}}</span>
                     </div>
-                    <div class="col-4">
+                    <div style = 'color:black' class="col-4">
                       Fee:<span> ${{university.fee}}</span>
                   </div>
                     </div>
@@ -283,6 +292,7 @@
                 </div>
                 
               </div>
+            </a>
             {% endif %}
               
             {% endfor %}
