@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import UserCreateForm, LoginForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse_lazy
+
+from django.contrib.auth.views import PasswordChangeView,PasswordResetDoneView
 
 # Create your views here.
 
@@ -53,3 +56,11 @@ def log_in(request):
 def log_out(request):
     logout(request)
     return redirect('landing')
+
+class MyPasswordChangeView(PasswordChangeView):
+    template_name='password-change.html'
+    success_url = reverse_lazy('change_password_complete')
+
+
+class MyPasswordResetDoneView(PasswordResetDoneView):
+    template_name='password-change-done.html'
