@@ -111,6 +111,7 @@ class Admission(models.Model):
 
 
 class Contact(models.Model):
+
     name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     subject = models.CharField(max_length=100)
@@ -118,3 +119,27 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name
+
+
+
+
+
+CATEGORY_CHOICES = [
+    ("Sport", ("Sport")),
+    ("Movie", ("Movie")),
+    ("News", ("News")),
+    ("Climate", ("Climate")),
+
+]
+class Blogs(models.Model):
+    title = models.CharField(max_length=150)
+    content = models.TextField()
+    quote = models.CharField(max_length=300,blank=True,null=True)
+    image = models.ImageField()
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    category = models.CharField(max_length=150, blank=True, null=True,choices=CATEGORY_CHOICES)
+
+
+
+    def __str__(self):
+        return self.title

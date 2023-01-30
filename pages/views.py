@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from .models import University, Admission
+from .models import University, Admission,Blogs
 from .filters import ListingFiLters
 from .forms import AdmissionForm,ContactForm
 from django.contrib.auth.decorators import login_required
@@ -119,3 +119,12 @@ def admission(request):
         return render(request, 'admission.html', {"pred": final_result})
     else:
         return render(request, 'admission.html', {'form': form})
+
+
+def blogs(request):
+    blogs = Blogs.objects.all()
+
+    context = {
+        'blogs': blogs
+        }
+    return render(request,'blogs.html',context)
