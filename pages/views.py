@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from .models import University, Admission,Blogs
-from .filters import ListingFiLters
+from .models import University, Admission,Blogs,Scholarship
+from .filters import ListingFiLters,ListingFiLtersScholarship
 from .forms import AdmissionForm,ContactForm
 from django.contrib.auth.decorators import login_required
 
@@ -30,7 +30,19 @@ def landing(request):
         'form':form
     }
 
-    return render(request, 'landing.html', context)
+    return render(request, 'index.html', context)
+
+def scholarships(request):
+    scholarships = Scholarship.objects.all()
+    filter_scholarship = ListingFiLtersScholarship(request.GET, queryset=scholarships)
+    print(filter_scholarship.form)
+
+    context = {
+        'scholarships': scholarships,
+        'filter_scholarship':filter_scholarship
+    }
+    return render(request, 'scholarships.html',context)
+
 
 @login_required(login_url = 'log_in')
 def detail(request, id):
@@ -128,3 +140,8 @@ def blogs(request):
         'blogs': blogs
         }
     return render(request,'blogs.html',context)
+
+
+def blogs_detail(request,id):
+    blog = get_object_or_404(Blogs, id=id)
+    return render(request, 'blog_detail.html', {'blog': blog})

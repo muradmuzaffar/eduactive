@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main %}
+  
+
+    <div class="dummy-height"></div>
+<main class="sections">
+  <section class="university-apply">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-xl-8 col-xxl-7">
+          <h1 class="page-slogan">
+            Admission to your dream university is close as one click
+          </h1>
+          <p class="page-desc">
+            With Eduactive, you can get detailed information about top 1000
+            universities, check your admission probability and apply to the
+            programs with a few clicks.
+          </p>
+          <form class="easy-apply-form" name="easyApplyForm" action="">
+            <div class="form-first-inputs">
+              <label for="gpa-label"
+                >GPA
+                <input
+                  placeholder="/100"
+                  id="gpa-label"
+                  name="gpaVal"
+                  class="d-block cs-input mt-2"
+                  type="number"
+                />
+              </label>
+              <label for="ielts-label"
+                >IELTS
+                <input
+                  placeholder="/9.0"
+                  id="ielts-label"
+                  name="ieltsVal"
+                  class="d-block cs-input mt-2"
+                  type="number"
+                />
+              </label>
+              <label for="toefl-label"
+                >TOEFL
+                <input
+                  placeholder="/120"
+                  id="toefl-label"
+                  name="toeflVal"
+                  class="d-block cs-input mt-2"
+                  type="number"
+                />
+              </label>
+              <label for="academic-label"
+                >Academic Degree
+                <select
+                  id="academic-label"
+                  name="academicVal"
+                  class="form-select cs-input mt-2"
+                  aria-label="Default select example"
+                >
+                  <option selected>Select Degree</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </label>
+            </div>
+            <div class="form-second-inputs">
+              <label for="gre-label"
+                >GRE
+                <input
+                  placeholder="/340"
+                  name="greVal"
+                  id="gre-label"
+                  class="d-block cs-input mt-2"
+                  type="number"
+                />
+              </label>
+              <label for="gmat-label"
+                >GMAT
+                <input
+                  placeholder="/800"
+                  name="gmatVal"
+                  id="gmat-label"
+                  class="d-block cs-input mt-2"
+                  type="number"
+                />
+              </label>
+              <label for="sat-label"
+                >SAT
+                <input
+                  placeholder="/1300"
+                  name="satVal"
+                  id="sat-label"
+                  class="d-block cs-input mt-2"
+                  type="number"
+                />
+              </label>
+              <label for="study-label"
+                >Study Field
+                <select
+                  id="study-label"
+                  name="studyVal"
+                  class="form-select cs-input mt-2"
+                  aria-label="Default select example"
+                >
+                  <option selected>Select Field</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </label>
+            </div>
+            <div class="apply-form-btns">
+              <a title="Easy Apply" href="apply-request.html" class="cs-btn"
+                >Easy Apply</a
+              >
+              <a
+                class="search-programs"
+                title="Scholarships"
+                href="scholarships.html"
+                >Search Programs
+                <img
+                  src="{% static 'assets/css/icons/others/select-arrow.svg' %}"
+                  alt="Search Programs"
+              /></a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="aboutUsSection" class="about-us">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-lg-6 col-xl-6">
+          <div class="about-us-img">
+            <img src="{% static 'assets/img/about-us-img.png' %}" alt="About Us" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xl-6">
+          <h2 class="section-title">About Us</h2>
+          <p class="about-description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nulla
+            turpis, mattis sed tempus ut, cursus sed arcu. Donec blandit sem
+            metus, vitae posuere velit auctor vel. Nunc hendrerit, dui viverra
+            malesuada mollis, leo tellus hendrerit justo, sed malesuada massa
+            tellus a neque. Quisque tincidunt lacinia tellus id aliquet. Donec
+            gravida tincidunt erat, in eleifend leo ultrices non. Fusce at massa
+            dui. Quisque elementum ac augue semper porttitor. Nunc nec nulla
+            est. Maecenas vitae ultricies dolor, et dignissim lorem. Donec ac
+            ante sapien. Morbi ullamcorper tempus orci at congue. Mauris finibus
+            diam nec facilisis blandit.<span
+              >Integer sollicitudin quam sit amet ante ullamcorper, vitae
+              tincidunt nulla ultrices. Nulla at mollis lorem. Sed vel erat
+              dolor. Aenean convallis ligula ex, tempus blandit libero
+              pellentesque in. Praesent vitae libero tellus. Duis molestie quam
+              nec eleifend sollicitudin. Suspendisse iaculis nulla porta
+              tristique scelerisque. Interdum et malesuada fames ac ante ipsum
+              primis in faucibus. Etiam aliquam cursus pellentesque. Donec id
+              ornare lacus, vitae varius felis.</span
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="why-eduactive">
+    <div class="container">
+      <h2 class="section-title">Why Eduactive?</h2>
+      <div class="why-eduactive-grid pt-sm-4">
+        <div class="row">
+          <div class="col-12 col-sm-6 col-xl-4">
+            <div class="why-eduactive-grid-item text-center">
+              <div class="eduactive-grid-item-img">
+                <img
+                  src="{% static 'assets/css/icons/others/grid-icon1.svg' %}"
+                  alt="Time Saving"
+                />
+              </div>
+              <h4 class="grid-heading">Time Saving</h4>
+              <p class="grid-txt">
+                No need to spend hours exploring! With just a few clicks, you
+                can easily familiarize yourself with the universities of your
+                choice and apply.
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-xl-4">
+            <div class="why-eduactive-grid-item text-center">
+              <div class="eduactive-grid-item-img">
+                <img
+                  src="{% static 'assets/css/icons/others/grid-icon2.svg' %}"
+                  alt="Time Saving"
+                />
+              </div>
+              <h4 class="grid-heading">Accessible Information</h4>
+              <p class="grid-txt">
+                Access to more than 300 education and scholarship programs
+                currently available in full detail.
+              </p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-xl-4">
+            <div class="why-eduactive-grid-item text-center">
+              <div class="eduactive-grid-item-img">
+                <img
+                  src="{% static 'assets/css/icons/others/grid-icon3.svg' %}"
+                  alt="Time Saving"
+                />
+              </div>
+              <h4 class="grid-heading">
+                Best Matching System to Education Programs
+              </h4>
+              <p class="grid-txt">
+                Worried about getting accepted? No need to worry! By recording
+                your educational information, we present the most suitable
+                universities to which you can be admitted!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="landing-blogs">
+    <div class="container position-relative">
+      <h2 class="section-title">Blogs</h2>
+      <div class="swiper main-swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper swiper-container">
+          <!-- Slides -->
+          <div class="swiper-slide">
+            <a class="text-decoration-none" href="blog.html">
+              <div class="landing-blog-item">
+                <div class="landing-blog-img">
+                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <span class="landing-blog-category">Category 1</span>
+                </div>
+                <div class="landing-blog-details">
+                  <span class="landing-blog-date">11 Nov 2022</span>
+                  <h3 class="landing-blog-title">
+                    <strong>Blog Title...</strong>
+                  </h3>
+                  <p class="landing-blog-txt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  </p>
+                  <a class="text-decoration-none" href="#"
+                    >Learn More
+                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                  /></a>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="text-decoration-none" href="blog.html">
+              <div class="landing-blog-item">
+                <div class="landing-blog-img">
+                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <span class="landing-blog-category">Category 1</span>
+                </div>
+                <div class="landing-blog-details">
+                  <span class="landing-blog-date">11 Nov 2022</span>
+                  <h3 class="landing-blog-title">
+                    <strong>Blog Title...</strong>
+                  </h3>
+                  <p class="landing-blog-txt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  </p>
+                  <a class="text-decoration-none" href="#"
+                    >Learn More
+                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                  /></a>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="text-decoration-none" href="blog.html">
+              <div class="landing-blog-item">
+                <div class="landing-blog-img">
+                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <span class="landing-blog-category">Category 1</span>
+                </div>
+                <div class="landing-blog-details">
+                  <span class="landing-blog-date">11 Nov 2022</span>
+                  <h3 class="landing-blog-title">
+                    <strong>Blog Title...</strong>
+                  </h3>
+                  <p class="landing-blog-txt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  </p>
+                  <a class="text-decoration-none" href="#"
+                    >Learn More
+                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                  /></a>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="text-decoration-none" href="blog.html">
+              <div class="landing-blog-item">
+                <div class="landing-blog-img">
+                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <span class="landing-blog-category">Category 1</span>
+                </div>
+                <div class="landing-blog-details">
+                  <span class="landing-blog-date">11 Nov 2022</span>
+                  <h3 class="landing-blog-title">
+                    <strong>Blog Title...</strong>
+                  </h3>
+                  <p class="landing-blog-txt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  </p>
+                  <a class="text-decoration-none" href="#"
+                    >Learn More
+                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                  /></a>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="text-decoration-none" href="blog.html">
+              <div class="landing-blog-item">
+                <div class="landing-blog-img">
+                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <span class="landing-blog-category">Category 1</span>
+                </div>
+                <div class="landing-blog-details">
+                  <span class="landing-blog-date">11 Nov 2022</span>
+                  <h3 class="landing-blog-title">
+                    <strong>Blog Title...</strong>
+                  </h3>
+                  <p class="landing-blog-txt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  </p>
+                  <a class="text-decoration-none" href="#"
+                    >Learn More
+                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                  /></a>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="text-decoration-none" href="blog.html">
+              <div class="landing-blog-item">
+                <div class="landing-blog-img">
+                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <span class="landing-blog-category">Category 1</span>
+                </div>
+                <div class="landing-blog-details">
+                  <span class="landing-blog-date">11 Nov 2022</span>
+                  <h3 class="landing-blog-title">
+                    <strong>Blog Title...</strong>
+                  </h3>
+                  <p class="landing-blog-txt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  </p>
+                  <a class="text-decoration-none" href="#"
+                    >Learn More
+                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                  /></a>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="text-decoration-none" href="blog.html">
+              <div class="landing-blog-item">
+                <div class="landing-blog-img">
+                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <span class="landing-blog-category">Category 1</span>
+                </div>
+                <div class="landing-blog-details">
+                  <span class="landing-blog-date">11 Nov 2022</span>
+                  <h3 class="landing-blog-title">
+                    <strong>Blog Title...</strong>
+                  </h3>
+                  <p class="landing-blog-txt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  </p>
+                  <a class="text-decoration-none" href="#"
+                    >Learn More
+                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                  /></a>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a class="text-decoration-none" href="blog.html">
+              <div class="landing-blog-item">
+                <div class="landing-blog-img">
+                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <span class="landing-blog-category">Category 1</span>
+                </div>
+                <div class="landing-blog-details">
+                  <span class="landing-blog-date">11 Nov 2022</span>
+                  <h3 class="landing-blog-title">
+                    <strong>Blog Title...</strong>
+                  </h3>
+                  <p class="landing-blog-txt">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                  </p>
+                  <a class="text-decoration-none" href="#"
+                    >Learn More
+                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                  /></a>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-button-prev swiper-btn-prev"></div>
+      <div class="swiper-button-next swiper-btn-next"></div>
+    </div>
+  </section>
+  <section id="contactUsSection" class="contact-us">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <div class="row">
+        <div class="col-12 col-lg-6 order-lg-1">
+          <div class="contact-us-image">
+            <img src="{% static 'assets/img/contact-us-animated.gif' %}" alt="" />
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 order-lg-0">
+          <div class="contact-us-form">
+            <form name="contactForm" class="contactForm" action="">
+              <div
+                class="contact-first-inputs d-flex justify-content-sm-between align-items-sm-center"
+              >
+                <label class="inputLabels" for="firstName"
+                  >First Name
+                  <input
+                    placeholder="Enter Name"
+                    class="cs-input mt-2"
+                    name="firstName"
+                    id="firstName"
+                    type="text"
+                  />
+                </label>
+                <label class="inputLabels" for="lastName"
+                  >Last Name
+                  <input
+                    placeholder="Enter Last Name"
+                    class="cs-input mt-2"
+                    name="lastName"
+                    id="lastName"
+                    type="text"
+                  />
+                </label>
+              </div>
+              <div
+                class="contact-second-inputs d-flex justify-content-sm-between align-items-sm-center"
+              >
+                <label class="inputLabels" for="email"
+                  >Email
+                  <input
+                    placeholder="sendme@mail.com"
+                    class="cs-input mt-2"
+                    type="email"
+                    name="email"
+                    id="email"
+                  />
+                </label>
+                <label class="inputLabels" for="phoneNumber"
+                  >Phone Number
+                  <input
+                    pattern=""
+                    placeholder="+994 (00) 000 00 00"
+                    class="cs-input mt-2"
+                    type="number"
+                    name="phoneNumber"
+                    id="phoneNumber"
+                  />
+                </label>
+              </div>
+              <div class="contact-third-inputs">
+                <label class="textareaLabel" for="message"
+                  >Message
+                  <textarea
+                    placeholder="I am reaching you for"
+                    class="cs-input mt-2"
+                    name="message"
+                    id="message"
+                  ></textarea>
+                </label>
+              </div>
+              <div class="contact-btn-sumbit">
+                <button class="cs-btn w-100" type="submit">Submit</button>
+                <span>Thanks for submitting✌</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="keep-updated">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <h2 class="section-title">Keep Updated!</h2>
+          <p class="keep-updated-txt">
+            Subscribe us to get updated for the latest news about scholarships,
+            education programs and other study abroad events
+          </p>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="keep-updated-inputs">
+            <label for="subscribeEmail"
+              >Email
+              <input
+                placeholder="@email.com"
+                class="cs-input mt-2"
+                type="email"
+                name="subscribeEmail"
+                id="subscribeEmail"
+              />
+            </label>
+            <div class="keep-updated-btn mt-4">
+              <button class="cs-btn w-100" type="submit">Submit</button>
+              <span>Thanks for submitting✌</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock main %}

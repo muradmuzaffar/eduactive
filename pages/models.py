@@ -40,6 +40,23 @@ REGION_CHOICES = [
 ]
 
 
+class Scholarship(models.Model):
+    region = models.CharField(max_length=50)
+    country = models.CharField(max_length=50)
+    degree = models.CharField(max_length=50)
+    amount = models.CharField(max_length=50)
+    name = models.CharField(max_length=250)
+    description = models.TextField()
+    eligibity = models.TextField()
+    benefits = models.TextField()
+    link = models.CharField(max_length=300)
+    dedline = models.CharField(max_length=50,blank=True,null=True)
+
+    def __str__(self):
+        return self.name
+
+
+
 class University(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     qs_rank = models.CharField(max_length=50, blank=True, null=True)
@@ -136,7 +153,7 @@ class Blogs(models.Model):
     content = models.TextField()
     quote = models.CharField(max_length=300,blank=True,null=True)
     image = models.ImageField()
-    created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
+    created_at = models.DateField(auto_now_add=True, blank=True, null=True)
     category = models.CharField(max_length=150, blank=True, null=True,choices=CATEGORY_CHOICES)
 
 

@@ -8,5 +8,7 @@ urlpatterns = [
     path('filters', filters, name='filters'),
     path('admission', admission, name='admission'),
     path('blogs', blogs, name='blogs'),
+    path('scholarships', scholarships, name='scholarships'),
+    path('blogs/detail/<int:id>', blogs_detail, name='blogs_detail'),
 
 ]

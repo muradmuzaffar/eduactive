@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserCreateForm, LoginForm
+from .models import Profile
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse_lazy
@@ -15,10 +16,10 @@ def register(request):
 
     if request.method == 'POST':
         form = UserCreateForm(request.POST)
-        print(form)
 
         if form.is_valid():
             form.save()
+            Profile.objects.create(user = form.save())
             return redirect('log_in')
         else:
             messages.warning(request, 'ERROR!')
