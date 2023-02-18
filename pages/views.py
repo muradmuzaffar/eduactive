@@ -35,7 +35,6 @@ def landing(request):
 def scholarships(request):
     scholarships = Scholarship.objects.all()
     filter_scholarship = ListingFiLtersScholarship(request.GET, queryset=scholarships)
-    print(filter_scholarship.form)
 
     context = {
         'scholarships': scholarships,

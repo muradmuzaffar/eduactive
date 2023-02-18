@@ -18,16 +18,30 @@
               
               <div class="all-filters">
                 <div class="degree-filter filterization">
-                  {% comment %} <span class="filter-title">Degree</span> {% endcomment %}
+                  
                   <form method='GET'>
                     {% csrf_token %}
+                    <span class="filter-title">Degree</span>
                     {% for degree in filter_scholarship.form.degree %}
                     <div class="form-check d-flex align-items-center"> 
                         {{degree.tag}} 
                         <label class="form-check-label" for="{{degree.id_for_label}}">{{degree.choice_label}}
                         </label>
                     </div>
-                     {% endfor %}
+                    {% endfor %}
+
+                    <span class="filter-title">Region</span>
+                    {% for  region in filter_scholarship.form.region  %}
+                    <div class="form-check d-flex align-items-center"> 
+                      {{region.tag}} 
+                      <label class="form-check-label" for="{{region.id_for_label}}">{{region.choice_label}}
+                      </label>
+                    </div>
+                    
+                    {% endfor %}
+
+                    
+                     
 
                     <button class="cs-btn login-link" type='submit'>Submit</button>
     

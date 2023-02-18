@@ -16,10 +16,15 @@ def register(request):
 
     if request.method == 'POST':
         form = UserCreateForm(request.POST)
+        print(form)
 
         if form.is_valid():
-            form.save()
-            Profile.objects.create(user = form.save())
+            user = form.save()
+            profile = Profile.objects.create(user = user,first_name = user.first_name,
+                                             last_name = user.last_name,email = user.email,
+            )
+           
+            
             return redirect('log_in')
         else:
             messages.warning(request, 'ERROR!')

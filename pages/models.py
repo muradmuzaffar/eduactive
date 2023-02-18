@@ -14,7 +14,7 @@ VAIWER_CHOICES = [
 DEGREE_CHOICES = [
     ("Bachelor", ("Bachelor")),
     ("Master", ("Master")),
-    ("Ph.D.", ("Ph.D.")),
+    ("PHD", ("PHD")),
     ("Exchange programme", ("Exchange programme")),
     ("Training programme", ("Training programme"))
 
@@ -41,7 +41,7 @@ REGION_CHOICES = [
 
 
 class Scholarship(models.Model):
-    region = models.CharField(max_length=50)
+    region = models.CharField(max_length=50, blank=True, null=True,choices=REGION_CHOICES)
     country = models.CharField(max_length=50)
     degree = models.CharField(max_length=50)
     amount = models.CharField(max_length=50)
