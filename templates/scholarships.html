@@ -21,9 +21,15 @@
                   {% comment %} <span class="filter-title">Degree</span> {% endcomment %}
                   <form method='GET'>
                     {% csrf_token %}
-    
-                    {{filter_scholarship.form}}
-                    {% comment %} <button class="cs-btn login-link" type='submit'>Submit</button> {% endcomment %}
+                    {% for degree in filter_scholarship.form.degree %}
+                    <div class="form-check d-flex align-items-center"> 
+                        {{degree.tag}} 
+                        <label class="form-check-label" for="{{degree.id_for_label}}">{{degree.choice_label}}
+                        </label>
+                    </div>
+                     {% endfor %}
+
+                    <button class="cs-btn login-link" type='submit'>Submit</button>
     
                   </form>
 
