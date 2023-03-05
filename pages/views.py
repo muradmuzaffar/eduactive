@@ -4,11 +4,7 @@ from .filters import ListingFiLters,ListingFiLtersScholarship
 from .forms import AdmissionForm,ContactForm
 from django.contrib.auth.decorators import login_required
 
-# import pandas as pd
-# import numpy as np
-# from sklearn.ensemble import RandomForestRegressor
-# import pickle
-# Create your views here.
+
 
 def landing(request):
     
@@ -18,22 +14,19 @@ def landing(request):
         if 'applyBtn' in request.POST:
             form1 = AdmissionForm(request.POST)
             if form1.is_valid():
-                
+
                 gpa = form1.cleaned_data['gpa']
                 ielts = form1.cleaned_data['ielts']
-                # print('****************')
-                print(gpa)
                 universities = University.objects.filter(ielts__gte =ielts)
+     
+                print('*******************************')
+                universities = universities.order_by('qs_rank')[0]
+               
+                # request.session['universities'] = universities
+                print(universities)
+                return redirect("blogs")
 
-                # print('*******************************')
-                # universities = universities.order_by('-qs_rank')[0:3]
-                # print(universities)
-                request.session['universities'] = universities
-                # return redirect("apply_request")
             
-            
-
-
            
         if 'contactBtn' in request.POST:
             form = ContactForm(request.POST)
@@ -56,16 +49,18 @@ def landing(request):
 
 
 def apply_request(request):
-    universities = request.session.get('universities')
-    print('*******************************')
-    print(universities)
+    # global university
+    # # universities = request.session.get('universities')
+    # universities = university()
+    # print('*******************************')
+    # print(universities)
 
-    context = {
-        'universities':universities,
+    # context = {
+    #     'universities':universities,
 
-    }
+    # }
     
-    return render(request, 'apply-request.html',context)
+    return render(request, 'apply-request.html')
 
 
 

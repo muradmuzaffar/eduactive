@@ -19,7 +19,7 @@
             universities, check your admission probability and apply to the
             programs with a few clicks.
           </p>
-          <form method = 'post' class="easy-apply-form" name="easyApplyForm" action = '{% url 'apply_request' %}'>
+          <form method = 'post' class="easy-apply-form" name="easyApplyForm" >
             {% csrf_token %}
             <div class="form-first-inputs">
               <label for="gpa-label"
