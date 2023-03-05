@@ -1,0 +1,125 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block main %}
+
+
+  <main class="sections">
+    <section class="login-page">
+        <div class="container">
+            <div class="sign-container">
+                <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Log in</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Sign Up</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                        <div class="login-social-media d-flex align-items-md-center flex-md-wrap">
+                            <button type="button" class="login-google d-flex align-items-center">
+                                <img src="{% static 'assets/css/icons/others/google.svg' %}" alt="Log in with Google">
+                                <span>Sign in with Google</span>
+                            </button>
+                            <button type="button" class="login-facebook d-flex align-items-center">
+                                <img src="{% static 'assets/css/icons/others/facebook1.svg' %}" alt="Log in with Facebook">
+                                <span>Sign in with Facebook</span>
+                            </button>
+                        </div>
+                        <form method='post' class="needs-validation sign-in-validation" novalidate>
+                          {% csrf_token %}
+                            <div class="logmailInput mb-4">
+                              <label for="logMailid" class="form-label">Username</label>
+                              {% comment %} <input type="text" class="form-control cs-input" id="logMailid" placeholder="username" required> {% endcomment %}
+                              {{form.username}}
+                              <div class="invalid-feedback">
+                                Please fill in the field!
+                              </div>
+                            </div>
+                            <div class="lonpassInput mb-4">
+                              <label for="logPassId" class="form-label">Password</label>
+                              <div class="input-group has-validation">
+                                {% comment %} <input type="password" placeholder="Enter Password" class="form-control  cs-input passborder" id="logPassId" aria-describedby="showHidePass" required> {% endcomment %}
+                                {{form.password}}
+                                <button class="btn btn-outline-secondary" type="button" id="showHidePass"><img src="{% static 'assets/css/icons/others/eye.svg' %}" alt="Show Hide Password"></button>
+                                <div class="invalid-feedback">
+                                    Please fill in the field!
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <button class="cs-btn w-100" type="submit">Log in</button>
+                              <a class=" loss-pass"  href="reset-pass.html">Loss Password?</a>
+                            </div>
+                          </form>
+                    </div>
+                    <div class="tab-pane fade " id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                        <form method = 'post' name="regForm" class="needs-validation reg-validation" novalidate>
+                          {% csrf_token %}
+                            <div class="regFirstName mb-4">
+                              <label for="regFirstNameInput" class="form-label">First name</label>
+                              {% comment %} <input type="text" class="form-control cs-input" id="regFirstNameInput" placeholder="Enter First Name" required> {% endcomment %}
+                              {{form1.first_name}}
+                              <div class="invalid-feedback">
+                                Please fill in the field!
+                              </div>
+                            </div>
+                            <div class="regLastName mb-4">
+                              <label for="regLastNameInput" class="form-label">Last name</label>
+                              {% comment %} <input type="text" class="form-control cs-input" id="regLastNameInput" placeholder="Enter Last Name" required> {% endcomment %}
+                              {{form1.last_name}}
+                              <div class="invalid-feedback">
+                                Please fill in the field!
+                              </div>
+                            </div>
+                            <div class="regLastName mb-4">
+                              <label for="regLastNameInput" class="form-label">Username</label>
+                              {% comment %} <input type="text" class="form-control cs-input" id="regLastNameInput" placeholder="Enter Last Name" required> {% endcomment %}
+                              {{form1.username}}
+                              <div class="invalid-feedback">
+                                Please fill in the field!
+                              </div>
+                            </div>
+                            <div class="logmailInput mb-4">
+                                <label for="logMailid" class="form-label">Email</label>
+                                {% comment %} <input type="email" class="form-control cs-input" id="logMailid" placeholder="@email.com" required> {% endcomment %}
+                                {{form1.email}}
+                                <div class="invalid-feedback">
+                                  Please fill in the field!
+                                </div>
+                              </div>
+                              <div class="lonpassInput mb-4">
+                                <label for="logPassId" class="form-label">Password</label>
+                                <div class="input-group has-validation">
+                                  {% comment %} <input type="password" placeholder="Enter Password" class="form-control  cs-input passborder" id="logPassId" aria-describedby="showHidePass2" required> {% endcomment %}
+                                  {{form1.password1}}
+                                  <button class="btn btn-outline-secondary" type="button" id="showHidePass2"><img src="{% static 'assets/css/icons/others/eye.svg' %}" alt="Show Hide Password"></button>
+                                  <div class="invalid-feedback">
+                                      Please fill in the field!
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="lonpassInput mb-4">
+                                <label for="logPassId" class="form-label">Password</label>
+                                <div class="input-group has-validation">
+                                  {% comment %} <input type="password" placeholder="Enter Password" class="form-control  cs-input " id="logPassId" aria-describedby="showHidePass" required> {% endcomment %}
+                                  {{form1.password2}}
+                                  <div class="invalid-feedback">
+                                      Please fill in the field!
+                                  </div>
+                                </div>
+                              </div>
+                            <div class="">
+                              <button class="cs-btn w-100" type="submit">Sign Up</button>
+                            </div>
+                          </form>
+                    </div>
+                  </div>                      
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock main %}

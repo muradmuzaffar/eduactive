@@ -21,31 +21,39 @@
     <header class="header">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-              <a class="navbar-brand" title="Home" href="index.html">edu<span>active</span></a>
+              <a class="navbar-brand" title="Home" href="{% url 'landing'%}">edu<span>active</span></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-lg-auto mb-md-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link" title="About" href="index.html#aboutUsSection">About US</a>
+                    <a class="nav-link" title="About" href="{% url 'landing'%}#aboutUsSection">About US</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" title="Scholarships" href="{%url 'scholarships' %}">Scholarhips</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" title="Blog" href="blog.html">Blogs</a>
+                    <a class="nav-link" title="Blog" href="{%url 'blogs' %}">Blogs</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" title="Contact" href="{%url 'landing' %}#contactUsSection">Contact Us</a>
                   </li>
                 </ul>
-                <a class="cs-btn login-link" href="login.html" title="Login">Login</a>
-                <div class="profile-link-img">
+                {% if user.is_authenticated %}
+                {% comment %} <div class="profile-link-img"> {% endcomment %}
                   <a class="text-decoration-none profile-link" title="Profile" href="profile.html">
                      <img src="{% static 'assets/css/icons/others/profile.svg' %}" alt="Profile">
                    </a>
-                </div>
+                {% comment %} </div> {% endcomment %}
+
+                {% else %}
+                <a class="cs-btn login-link" href="{% url 'authenticate'%}" title="Login">Login</a>
+                {% endif %}
+
+                
+                
+                
               </div>
             </div>
           </nav>

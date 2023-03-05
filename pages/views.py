@@ -10,27 +10,77 @@ from django.contrib.auth.decorators import login_required
 # import pickle
 # Create your views here.
 
-
 def landing(request):
-    universitys = University.objects.all()
-
+    
 
     if request.method == "POST":
-        form = ContactForm(request.POST)
-        print(form)
-        if form.is_valid():
-            print(form)
-            form.save()
-            return redirect("landing")
+        
+        if 'applyBtn' in request.POST:
+            form1 = AdmissionForm(request.POST)
+            if form1.is_valid():
+                
+                gpa = form1.cleaned_data['gpa']
+                ielts = form1.cleaned_data['ielts']
+                # print('****************')
+                print(gpa)
+                universities = University.objects.filter(ielts__gte =ielts)
+
+                # print('*******************************')
+                # universities = universities.order_by('-qs_rank')[0:3]
+                # print(universities)
+                request.session['universities'] = universities
+                # return redirect("apply_request")
+            
+            
+
+
+           
+        if 'contactBtn' in request.POST:
+            form = ContactForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect("landing")
+            
 
     form = ContactForm()
+    form1 = AdmissionForm()
 
     context = {
-        'universitys': universitys,
-        'form':form
+        'form':form,
+        'form1':form1,
+
     }
 
     return render(request, 'index.html', context)
+
+
+
+def apply_request(request):
+    universities = request.session.get('universities')
+    print('*******************************')
+    print(universities)
+
+    context = {
+        'universities':universities,
+
+    }
+    
+    return render(request, 'apply-request.html',context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def scholarships(request):
     scholarships = Scholarship.objects.all()
@@ -63,73 +113,7 @@ def filters(request,):
     return render(request, 'filters.html', context)
 
 
-def admission(request):
-    form = AdmissionForm(request.POST or None)
-    if request.method == 'POST':
-        form = AdmissionForm(request.POST)
-        if form.is_valid():
-            gre = form.cleaned_data['gre']
-            gpa = form.cleaned_data['gpa']
-            lor = form.cleaned_data['lor']
-            sop = form.cleaned_data['sop']
-            research = form.cleaned_data['research']
-            rating = form.cleaned_data['rating']
-            toefl = form.cleaned_data['toefl']
 
-            result_1 =  gpa*0.1+lor*0.2+sop*0.2
-            result_2 = (gre/340) + (toefl/120)
-            result_3 = float(research) - float(rating)*0.2
-            print('***************************')
-
-            final_result = (round((result_1+result_2+result_3) / 7 , 2)) 
-            print('***************************')
-
-
-            # inputs = pd.DataFrame({'gre': gre,
-            #                        'toefl': toefl,
-            #                        'university_rating': rating,
-            #                        'sop': sop,
-            #                        'lor': lor,
-            #                        'gpa': gpa,
-            #                        'research': research,
-
-            #                        },  index=[0])
-            # # print(inputs)
-            # # print('****************************')
-
-            # model = pd.read_pickle('./Model Design/model.pkl')
-
-            # data = pd.read_csv('./Model Design/admission_data.csv',
-            #                    index_col=0).drop(columns=['admit_chance']).reset_index()
-            # # print(data)
-            # # print('****************************')
-            # df = pd.concat([inputs, data], axis=0)
-            # # print(df)
-            # # print('****************************')
-
-            # encode = ['research', 'university_rating']
-            # for col in encode:
-            #     dummy = pd.get_dummies(df[col], prefix=col)
-            #     df = pd.concat([df, dummy], axis=1)
-            #     del df[col]
-            # df = df[:1]
-            # # del df['lor']
-            # # df.columns = np.unique(df.columns)
-            # df = df.loc[:,~df.columns.duplicated()].copy()
-            
-            # # print('****************************')
-            # # print(df)
-            # # print('****************************')
-
-
-        
-            # pred = model.predict(df)
-            # # print(pred)
-            
-
-        return render(request, 'admission.html', {"pred": final_result})
-    else:
-        return render(request, 'admission.html', {'form': form})
 
 
 def blogs(request):
@@ -144,3 +128,8 @@ def blogs(request):
 def blogs_detail(request,id):
     blog = get_object_or_404(Blogs, id=id)
     return render(request, 'blog_detail.html', {'blog': blog})
+
+def scholarship_detail(request,id):
+    scholarship = get_object_or_404(Scholarship, id=id)
+    return render(request, 'scholarship_detail.html', {'scholarship': scholarship})
+

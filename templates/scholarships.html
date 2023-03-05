@@ -187,7 +187,7 @@
                     <div class="study-programs-list">
 
                       {% for scholarship in filter_scholarship.qs %}
-                      <a class="text-decoration-none" href="scholarship-details.html">
+                      <a class="text-decoration-none" href="{%url 'scholarship_detail' scholarship.id%}">
                         <div class="study-program-list-item">
                           <h4 class="program-title">
                             {{scholarship.name}}

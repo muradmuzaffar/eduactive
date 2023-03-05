@@ -5,43 +5,44 @@ from django.contrib.auth.models import User
 
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={
-        'id': 'username',
+        'class': 'form-control cs-input',
         'placeholder': 'Username'
     }))
     password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'id': 'password',
-        'placeholder': 'Password'
+        'class': 'form-control cs-input passborder',
+        'placeholder': 'Password',
+        'aria-describedby': 'showHidePass'
     }))
 
 
 class UserCreateForm(UserCreationForm):
     first_name = forms.CharField(widget=forms.TextInput(attrs={
-        'id': 'first_name',
+        'class': 'form-control cs-input',
         'placeholder': 'First Name'
     }))
 
     last_name = forms.CharField(widget=forms.TextInput(attrs={
-        'id': 'last_name',
+        'class': 'form-control cs-input',
         'placeholder': 'Last Name'
     }))
 
     username = forms.CharField(widget=forms.TextInput(attrs={
-        'id': 'username',
+        'class': 'form-control cs-input',
         'placeholder': 'Username'
     }))
 
     email = forms.CharField(widget=forms.EmailInput(attrs={
-        'id': 'email',
+        'class': 'form-control cs-input',
         'placeholder': 'Email'
     }))
 
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'id': 'password1',
+        'class': 'form-control cs-input',
         'placeholder': 'Password'
     }))
 
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
-        'id': 'password2',
+        'class': 'form-control cs-input',
         'placeholder': 'Re-Type Password'
     }))
 

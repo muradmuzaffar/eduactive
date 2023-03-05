@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+
+{% block main %}
+<div class="dummy-height"></div>
+<main class="sections">
+  <section class="scholarship-details">
+    <div class="container">
+      <div class="scholarship-main">
+        <div class="row align-items-xl-center">
+          <div class="col-12 col-xl-8">
+            <div class="scholarship-main-details">
+              <h1 class="scholarship-title">
+                Physics: Fully Funded UKRI PHD Scholarship at Swansea University
+              </h1>
+              <div
+                class="program-details d-flex align-items-center justify-content-between flex-wrap"
+              >
+                <div class="program-degree d-flex align-items-center">
+                  <img
+                    src="{% static 'assets/css/icons/others/degree.svg' %}"
+                    alt="Program Degree"
+                  />
+                  <span>Bachelor</span>
+                </div>
+                <div class="program-time d-flex align-items-center">
+                  <img
+                    src="{% static 'assets/css/icons/others/time.svg' %}"
+                    alt="Program Degree"
+                  />
+                  <span>11.26.2022 (2 months)</span>
+                </div>
+                <div class="program-money d-flex align-items-center">
+                  <img
+                    src="{% static 'assets/css/icons/others/money.svg' %}"
+                    alt="Program Degree"
+                  />
+                  <span>$35.000</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-xl-4">
+            <div class="visit-scholarship text-xl-end">
+                <a class="text-decoration-none cs-btn" href="#">Visit Scholarship Website</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scholarship-info">
+        <div class="scholarship-content">
+            <h4>About Program</h4>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi mollis libero id metus ultrices auctor. Maecenas nunc purus, porta vitae est vitae, suscipit feugiat neque. Nullam iaculis ullamcorper ultrices. Vestibulum tempor quam a mi volutpat convallis. Curabitur ullamcorper tellus sit amet quam consectetur blandit. Aliquam a sem a lorem ultrices malesuada. Vestibulum tristique quam quis metus cursus vulputate. Nulla fringilla gravida mi, sit amet congue felis pharetra vel.
+                Phasellus semper varius tortor ac ornare. Maecenas ac eros orci. Sed sed diam dui. Etiam non varius augue, in cursus nunc. Nam efficitur, augue sit amet porttitor ornare, justo est sodales ipsum, sed maximus nunc lorem et leo. Donec congue nisl in libero volutpat posuere. Nullam nisi ligula, laoreet vitae urna non, sodales varius lectus. Nam a augue in neque rutrum venenatis eu sit amet purus. Nam euismod vitae ligula et cursus. Sed gravida ornare cursus. Curabitur dictum sollicitudin elit eget efficitur.</p>
+        </div>
+        <div class="scholarship-content">
+            <h4>Eligibility</h4>
+            <p>Candidates must normally hold an undergraduate degree at 2.1 level or a master’s degree with a minimum overall grade at ‘Merit’ (or Non-UK equivalent as defined by Swansea University).</p>
+        </div>
+        <div class="scholarship-content">
+            <h4>Benefits</h4>
+            <p>This scholarship covers the full cost of tuition fees and an annual stipend of £25,000. Additional research expenses will also be available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock main %}

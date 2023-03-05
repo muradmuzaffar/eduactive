@@ -6,9 +6,11 @@ urlpatterns = [
 
     path('university/detail/<int:id>', detail, name='detail'),
     path('filters', filters, name='filters'),
-    path('admission', admission, name='admission'),
     path('blogs', blogs, name='blogs'),
-    path('scholarships', scholarships, name='scholarships'),
     path('blogs/detail/<int:id>', blogs_detail, name='blogs_detail'),
+    path('scholarships', scholarships, name='scholarships'),
+    path('scholarship/detail/<int:id>', scholarship_detail, name='scholarship_detail'),
+    path('apply-request', apply_request, name='apply_request'),
+    
 
 ]

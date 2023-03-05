@@ -6,26 +6,42 @@
 
 {% block main %}
 
-{% for blog in blogs  %}
+<div class="dummy-height"></div>
+<main class="sections">
+    <section class="blog-header">
+        <div class="container">
+            <h1 class="blog-title">Blogs</h1>
+            <h2 class="blog-desc">Explore and read interesting blogs everyday in Eduactive</h2>
+        </div>
+    </section>
+    <section class="blog-grid">
+        <div class="container">
+            <div class="row">
+              {% for blog in blogs  %}
+                <div class="col-12 col-md-6 col-xl-4 ">
+                    <a class="text-decoration-none" href="{% url 'blogs_detail' blog.id %}">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <img src="{{blog.image.url}}" alt="Eiffel Tower">
+                                <span class="blog-category">{{blog.category}}</span>
+                            </div>
+                            <div class="blog-details">
+                                <span class="blog-date">{{blog.created_at}}</span>
+                                <h3 class="blog-heading"><strong>{{blog.title}}</strong></h3>
+                                <p class="blog-txt">{{blog.content | truncatewords:20}}</p>
+                                <a class="text-decoration-none" href="{% url 'blogs_detail' blog.id %}">Learn More <img
+                                        src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""></a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+              {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+</main>
 
-<div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="{{blog.image.url}}" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">{{blog.title}}</h5>
 
-      {% if blog.quote %}
-      <h3 class="card-text">{{blog.quote}}</h3>
-      {% endif %}
-      <p class="card-text">{{blog.created_at}}</p>
-
-      
-      
-      <p class="card-text">{{blog.content}}</p>
-      
-      <a href="{%url 'blogs_detail' blog.id %}" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
-
-  {% endfor %}
 
 {% endblock main %}
