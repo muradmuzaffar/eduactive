@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main %}
+    <div class="dummy-height"></div>
+<main class="sections">
+  <section class="university-profile">
+    <div class="container">
+      <h1 class="university-profile-title">University Profile</h1>
+      <div class="uni-profile-details d-flex align-items-center justify-content-between flex-wrap">
+        <div class="uni-info">
+            <div class="uni-degree">Economics/ Bachelor</div>
+            <div class="uni-loc">Texas University, San Antonio</div>
+            <span class="me-2 qs-class">QS <span>#34</span></span>
+            <span class="me-2 qs-class">QS <span>#34</span></span>
+            <span class="qs-class">QS <span>#34</span></span>
+        </div>
+        <div class="uni-apply-link">
+            <a class="text-decoration-none d-block cs-btn" href="#">Apply</a>
+            <div>$70 application fee</div>
+        </div>
+      </div>
+      <div class="uni-programs-details d-lg-flex justify-content-between align-items-start">
+        <div class="uni-program-about">
+          <h4>About Program</h4>
+          <p>
+            {{university.bio}}
+          </p>
+        </div>
+        <div class="uni-program-extend">
+          <p class="uni-duration">Program duration: <span>9 months</span></p>
+          <p class="uni-fee">
+            <img src="{% static 'assets/css/icons/others/green-tick.svg' %}" alt="">
+            Free Application <span>(Application Fee Waiver)</span>
+          </p>
+          <ul class="list-unstyled">
+            <li class="list-loc mb-2 d-flex align-items-center">
+              <img src="{% static 'assets/css/icons/others/location.svg' %}" alt="">
+              <span>Texas, San Antonio, ABŞ</span>
+            </li>
+            <li class="list-date mb-2 d-flex align-items-center">
+              <img src="{% static 'assets/css/icons/others/time.svg' %}" alt="">
+              <span>11.26.2022 (2 months)</span>
+            </li>
+            <li class="list-price d-flex align-items-center">
+              <img src="{% static 'assets/css/icons/others/money.svg' %}" alt="">
+              <span>$35,000 yearly</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="requirements">
+        <h4>Requirements</h4>
+        <div class="one-requirement require">
+          <span>Language Tests</span>
+          <span>
+
+            {% if university.toefl %}
+            TOEFL {{university.toefl}} or
+            {% endif %}
+               IELTS {{university.ielts}} 
+          </span>
+        </div>
+        <div class="two-requirement require">
+          <span>Additional preferences</span>
+          <span>Academic Research </span>
+        </div>
+        <div class="three-requirement require">
+          <span>GPA</span>
+          <span>{{university.gpa}}/4.00</span>
+        </div>
+        <div class="four-requirement require">
+          <span>Other Requirements</span>
+          <span>CV, motivation and reference letter </span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+{% endblock main %}

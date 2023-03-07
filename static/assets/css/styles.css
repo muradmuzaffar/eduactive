@@ -74,6 +74,7 @@ body {
   border-radius: 8px;
   outline: none;
   padding: 16px 12px;
+  resize: none;
   font: 12px Poppins-SemiBold;
   line-height: 15px;
   color: var(--black);
@@ -92,6 +93,7 @@ body {
 .cs-input:hover, .cs-input:focus, .cs-input:active {
   border-color: var(--eduactive-color-2);
   color: var(--black);
+  box-shadow: none;
 }
 
 .header {
@@ -101,7 +103,7 @@ body {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 3333;
+  z-index: 800;
 }
 .header .navbar-toggler:focus {
   box-shadow: none;
@@ -224,11 +226,11 @@ body {
 .form-second-inputs label input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.form-first-inputs label select,
+/* .form-first-inputs label select,
 .form-second-inputs label select {
   background-image: url("../css/icons/others/select-arrow.svg");
   background-size: 12px 8px;
-}
+} */
 .form-first-inputs label select:focus,
 .form-second-inputs label select:focus {
   box-shadow: none;
@@ -1573,12 +1575,23 @@ body {
 }
 
 .university-list-item {
-  max-width: 330px;
   background: #ffffff;
   border: 1.2px solid #edeffd;
   border-radius: 28.8px;
   text-align: center;
   margin-bottom: 12px;
+}
+
+.university-one-five {
+  max-width: 191px;
+}
+
+.university-two-four {
+  max-width: 227px;
+}
+
+.university-three {
+  max-width: 273px;
 }
 
 .university-qs {
@@ -1614,24 +1627,32 @@ body {
   color: var(--black);
   margin-bottom: 4px;
   padding: 0;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: block-axis;
+  display: -webkit-box;
+  overflow: hidden;
+  height: 40px;
 }
 
 .deegree-name-first-last {
   font-size: 16px;
   line-height: 16px;
   margin-bottom: 0;
+  height: 32px;
 }
 
 .deegree-name-second-forth {
   font-size: 18px;
   line-height: 18px;
+  height: 34px;
 }
 
 .university-loc {
   display: inline-block;
   font: 16px Poppins-SemiBold;
   line-height: 25px;
-  color: #787B8E;
+  color: #787b8e;
   margin-bottom: 16px;
 }
 
@@ -1797,6 +1818,356 @@ body {
   font: 14px Poppins-SemiBold;
   line-height: 21px;
   color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.qs-class {
+  font: 16px Poppins-SemiBold;
+  line-height: 24px;
+  color: var(--eduactive-color-2);
+}
+.qs-class span {
+  font-weight: 400;
+  color: var(--gray-3);
+}
+
+.uni-programs-details {
+  margin-top: 32px;
+}
+
+.uni-program-about {
+  max-width: 800px;
+}
+.uni-program-about h4 {
+  font: 24px Poppins-SemiBold;
+  line-height: 36px;
+  color: var(--black);
+  margin-bottom: 12px;
+  padding: 0;
+}
+.uni-program-about p {
+  font: 16px Poppins-Medium;
+  line-height: 24px;
+  color: var(--black);
+  text-transform: capitalize;
+}
+
+.uni-duration {
+  font: 20px Poppins-SemiBold;
+  line-height: 30px;
+  color: var(--eduactive-color-2);
+  padding: 0;
+  margin-bottom: 8px;
+}
+.uni-duration span {
+  font-size: inherit;
+  font-weight: 400;
+  line-height: inherit;
+  color: var(--black);
+}
+
+.uni-fee {
+  font: 18px Poppins-Regular;
+  line-height: 30px;
+  color: var(--gray-3);
+}
+.uni-fee img {
+  width: 18px;
+  height: 18px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.uni-fee span {
+  font: inherit;
+  line-height: inherit;
+  color: var(--gray-3);
+  display: block;
+}
+
+.list-loc img {
+  width: 14px;
+  height: 16px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.list-date img {
+  width: 16px;
+  height: 16px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.list-price img {
+  width: 18px;
+  height: 16px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.list-loc span,
+.list-date span,
+.list-price span {
+  font: 18px Poppins-SemiBold;
+  line-height: 25px;
+  color: var(--gray-3);
+  padding-left: 6px;
+}
+
+.requirements {
+  margin-top: 50px;
+}
+.requirements h4 {
+  font: 24px Poppins-SemiBold;
+  line-height: 36px;
+  color: var(--black);
+}
+
+.require {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+.require span:nth-child(1) {
+  font: 16px Poppins-SemiBold;
+  line-height: 30px;
+  color: var(--black);
+}
+.require span:nth-child(2) {
+  font: 16px Poppins-SemiBold;
+  line-height: 30px;
+  color: var(--gray-3);
+}
+.require:nth-child(even) {
+  background-color: var(--gray-soft);
+}
+
+.profile {
+  min-height: 90vh;
+  padding-top: 40px;
+}
+
+.profile-title {
+  font: 48px Poppins-Medium;
+  line-height: 72px;
+  text-align: center;
+  color: var(--gray-4);
+}
+.profile-title span {
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+  text-align: inherit;
+  color: var(bl);
+}
+
+.profile-txt {
+  font: 24px Poppins-Medium;
+  line-height: 36px;
+  text-align: center;
+  color: var(--gray);
+}
+
+.profile-tabs {
+  margin: 36px auto 0 auto;
+}
+.profile-tabs hr {
+  border-color: var(--gray);
+  opacity: 1;
+  margin: 42px 0;
+}
+.profile-tabs .profile-label {
+  color: var(--black);
+  font: 12px Poppins-SemiBold;
+  line-height: 15px;
+  margin-bottom: 8px;
+}
+.profile-tabs .nav-tabs {
+  max-width: 800px;
+  border: none;
+  margin: 0 auto 48px auto;
+}
+.profile-tabs .tabPane {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.profile-tabs .tabPane2 {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.profile-tabs .nav-link {
+  outline: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font: 18px Poppins-Medium;
+  line-height: 30px;
+  color: var(--gray-2);
+  background: none;
+}
+.profile-tabs .nav-link.active {
+  color: var(--eduactive-color-2);
+  background: none;
+  border-color: var(--eduactive-color-2);
+}
+.profile-tabs .profile-btns {
+  max-width: 500px;
+  margin: 52px auto 24px auto;
+}
+.profile-tabs .profile-btns a {
+  font: 16px Poppins-Medium;
+  line-height: 30px;
+  display: block;
+  color: var(--eduactive-color-2);
+  margin-bottom: 24px;
+}
+
+.logout hr {
+  border-color: var(--gray);
+}
+.logout a {
+  display: block;
+  max-width: 500px;
+  margin: 24px auto;
+  border: 1px solid var(--gray);
+  font: 16px Poppins-Medium;
+  line-height: 30px;
+  color: var(--gray);
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 4px;
+  transition: var(--transition);
+}
+.logout a:hover {
+  border-color: var(--eduactive-color-2);
+  color: var(--eduactive-color-2);
+}
+
+.modal-one .modal-body, .modal-two .modal-body {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px;
+}
+.modal-one .modal-body h3, .modal-two .modal-body h3 {
+  font: 32px Poppins-SemiBold;
+  line-height: 54px;
+  color: var(--black);
+}
+.modal-one .modal-body p, .modal-two .modal-body p {
+  font: 20px Poppins-Medium;
+  line-height: 25px;
+  color: var(--black);
+  margin-bottom: 48px;
+}
+.modal-one .modal-body form, .modal-two .modal-body form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.modal-one .modal-body button, .modal-two .modal-body button {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 32px;
+}
+.modal-one .modal-body .ml-form .form-label, .modal-two .modal-body .ml-form .form-label {
+  font: 12px Poppins-SemiBold;
+  line-height: 15px;
+  margin-bottom: 8px;
+  color: var(--black);
+}
+
+.profile-app-title {
+  font: 32px Poppins-SemiBold;
+  line-height: 40px;
+  color: var(--black);
+  max-width: 200px;
+}
+
+.upload-file a {
+  color: var(--eduactive-color-2);
+  font: 18px Poppins-Medium;
+  line-height: 30px;
+}
+
+.profile-app-txt p {
+  font: 18px Poppins-Medium;
+  line-height: 25px;
+  color: var(--black);
+}
+.profile-app-txt span {
+  display: block;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+}
+
+.attemp-uni-list {
+  border-bottom: 1px solid var(--gray);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.attemp-uni-details .attemp-uni-loc img,
+.attemp-uni-details .attemp-uni-date img,
+.attemp-uni-details .attemp-uni-price img {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.attemp-uni-details .attemp-uni-loc span,
+.attemp-uni-details .attemp-uni-date span,
+.attemp-uni-details .attemp-uni-price span {
+  font: 14px Poppins-SemiBold;
+  line-height: 17px;
+  color: var(--gray);
+  display: inline-block;
+  padding-left: 6px;
+}
+.attemp-uni-details .attemp-uni-loc img {
+  width: 10px;
+  height: 12px;
+}
+.attemp-uni-details .attemp-uni-date img {
+  width: 12px;
+  height: 12px;
+}
+.attemp-uni-details .attemp-uni-price img {
+  width: 14px;
+  height: 12px;
+}
+
+.attemp-uni-status {
+  font: 20px Poppins-SemiBold;
+  line-height: 32px;
+  text-transform: capitalize;
+}
+
+.admitted {
+  color: var(--system-right);
+}
+
+.applied {
+  color: var(--eduactive-color-1);
+}
+
+.in-progress {
+  color: var(--system-issue);
+}
+
+.not-started {
+  color: var(--gray);
+}
+
+.attemp-uni-heading h4 {
+  font: 20px Poppins-SemiBold;
+  line-height: 30px;
+  color: var(--black);
+  margin: 0;
+  padding: 0;
+}
+.attemp-uni-heading span {
+  font: 14px Poppins-SemiBold;
+  line-height: 21px;
+  color: var(--gray);
 }
 
 @media screen and (max-width: 1399.98px) {
@@ -1809,6 +2180,9 @@ body {
   }
   .contactForm .inputLabels {
     width: 250px;
+  }
+  .uni-program-about {
+    max-width: 700px;
   }
 }
 @media screen and (max-width: 1199.98px) {
@@ -1915,6 +2289,9 @@ body {
   }
   .start-application-process {
     padding-top: 40px;
+  }
+  .uni-program-about {
+    max-width: 550px;
   }
 }
 @media screen and (max-width: 991.98px) {
@@ -2200,6 +2577,31 @@ body {
     font-size: 20px;
     line-height: 28px;
   }
+  .university-profile-title {
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 24px;
+  }
+  .uni-program-about {
+    max-width: none;
+  }
+  .profile-app-title {
+    max-width: none;
+    margin-bottom: 12px;
+  }
+  .profile-title {
+    font-size: 36px;
+  }
+  .profile-txt {
+    font-size: 20px;
+  }
+  .modal-one .modal-body, .modal-two .modal-body {
+    padding: 40px;
+  }
+  .modal-one .modal-dialog,
+  .modal-two .modal-dialog {
+    max-width: 767px;
+  }
 }
 @media screen and (max-width: 767.98px) {
   .university-apply {
@@ -2391,6 +2793,63 @@ body {
     font-size: 20px;
     line-height: 28px;
   }
+  .uni-program-about p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .uni-duration {
+    font-size: 18px;
+  }
+  .uni-fee {
+    font-size: 16px;
+  }
+  .list-loc span, .list-date span, .list-price span {
+    font-size: 16px;
+  }
+  .profile {
+    padding-top: 20px;
+  }
+  .profile-tabs .nav-tabs {
+    max-width: none;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    margin: 0 auto 24px auto;
+  }
+  .profile-app-txt p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .profile-app-title {
+    font-size: 28px;
+  }
+  .nav-fill .nav-item, .nav-fill > .nav-link {
+    white-space: nowrap;
+  }
+  .upload-file {
+    margin-top: 8px;
+    margin-left: 8px;
+  }
+  .attemp-uni-heading h4,
+  .attemp-uni-status {
+    font-size: 18px;
+  }
+  .attemp-uni-details div:not(:last-child) {
+    margin-right: 8px;
+  }
+  .modal-one .modal-dialog,
+  .modal-two .modal-dialog {
+    max-width: 570px;
+  }
+  .modal-one .modal-body h3, .modal-two .modal-body h3 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+  .modal-one .modal-body p, .modal-two .modal-body p {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }
 @media screen and (max-width: 575.98px) {
   .header .nav-link {
@@ -2581,6 +3040,51 @@ body {
     font-size: 18px;
     line-height: 24px;
   }
+  .requirements {
+    margin-top: 32px;
+  }
+  .require {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .university-profile {
+    padding: 10px 0 40px 0;
+  }
+  .profile-title {
+    font-size: 32px;
+    line-height: 36px;
+  }
+  .profile-txt {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .profile-tabs .nav-link {
+    font-size: 16px;
+  }
+  .profile-tabs .profile-btns a {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .logout a {
+    font-size: 14px;
+  }
+  .profile-app-title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .attemp-uni-heading h4, .attemp-uni-status {
+    line-height: 20px;
+  }
+  .modal-one .modal-body, .modal-two .modal-body {
+    padding: 20px;
+  }
+  .modal-one .modal-body h3, .modal-two .modal-body h3 {
+    font-size: 24px;
+    line-height: 28px;
+  }
+  .modal-one .modal-body p, .modal-two .modal-body p {
+    margin-bottom: 12px;
+  }
 }
 @media screen and (max-width: 476px) {
   .program-details > div {
@@ -2589,5 +3093,22 @@ body {
   }
   .study-program-list-block {
     top: 240px;
+  }
+  .uni-profile-details {
+    display: block !important;
+  }
+  .uni-apply-link {
+    max-width: 150px;
+    margin-top: 12px;
+  }
+  .uni-programs-details {
+    margin-top: 18px;
+  }
+  .modal-one .modal-body p, .modal-two .modal-body p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .modal-one .modal-body, .modal-two .modal-body {
+    padding: 10px;
   }
 }

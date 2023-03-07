@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block main %}
+
+<main class="sections">
+    <section class="login-page">
+        <div class="container">
+            <div class="sign-container">
+                
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                        
+                        <form method='post' class="needs-validation sign-in-validation" novalidate>
+                          {% csrf_token %}
+                            <div class="logmailInput mb-4">
+                              <label for="logMailid" class="form-label">Name</label>
+                              {{form.name}}
+                              <div class="invalid-feedback">
+                                Please fill in the field!
+                              </div>
+                            </div>
+                            <div class="lonpassInput mb-4">
+                              <label for="logPassId" class="form-label">Email</label>
+                              <div class="input-group has-validation">
+                                {{form.email}}
+                                <div class="invalid-feedback">
+                                    Please fill in the field!
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <button class="cs-btn w-100" type="submit">Send</button>
+                            </div>
+                          </form>
+                    </div>
+                    
+                  </div>                      
+            </div>
+        </div>
+    </section>
+</main>
+
+
+{% endblock main %}

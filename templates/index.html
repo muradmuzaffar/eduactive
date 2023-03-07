@@ -19,7 +19,7 @@
             universities, check your admission probability and apply to the
             programs with a few clicks.
           </p>
-          <form method = 'post' class="easy-apply-form" name="easyApplyForm" >
+          <form method = 'post' class="easy-apply-form" name="easyApplyForm"  >
             {% csrf_token %}
             <div class="form-first-inputs">
               <label for="gpa-label"
@@ -45,7 +45,7 @@
                 {{form1.ielts}}
               </label>
               <label for="toefl-label"
-                >GRE
+                >TOEFL
                 {% comment %} <input
                   placeholder="/120"
                   id="toefl-label"
@@ -53,11 +53,11 @@
                   class="d-block cs-input mt-2"
                   type="number"
                 /> {% endcomment %}
-                {{form1.gre}}
+                {{form1.toefl}}
               </label>
-              <label for="academic-label"
-                >Academic Degree
-                {% comment %} <select
+              {% comment %} <label for="academic-label"
+                >Study Program 
+                <select
                   id="academic-label"
                   name="academicVal"
                   class="form-select cs-input mt-2"
@@ -67,32 +67,34 @@
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
-                </select>  {% endcomment %}
-                {{form1.degree}}
+                </select>   {% endcomment %}
+                {% comment %} {{form1.program}}  {% endcomment %}
               </label>
             </div>
-            {% comment %} <div class="form-second-inputs">
+            <div class="form-second-inputs">
               <label for="gre-label"
                 >GRE
-                <input
+                {% comment %} <input
                   placeholder="/340"
                   name="greVal"
                   id="gre-label"
                   class="d-block cs-input mt-2"
                   type="number"
-                />
+                /> {% endcomment %}
+                {{form1.gre}}
               </label>
               <label for="gmat-label"
                 >GMAT
-                <input
+                {% comment %} <input
                   placeholder="/800"
                   name="gmatVal"
                   id="gmat-label"
                   class="d-block cs-input mt-2"
                   type="number"
-                />
+                /> {% endcomment %}
+                {{form1.gmat}}
               </label>
-              <label for="sat-label"
+              {% comment %} <label for="sat-label"
                 >SAT
                 <input
                   placeholder="/1300"
@@ -101,10 +103,10 @@
                   class="d-block cs-input mt-2"
                   type="number"
                 />
-              </label>
+              </label>{% endcomment %}
               <label for="study-label"
-                >Study Field
-                <select
+                >Degree
+                {% comment %} <select
                   id="study-label"
                   name="studyVal"
                   class="form-select cs-input mt-2"
@@ -114,9 +116,10 @@
                   <option value="1">One</option>
                   <option value="2">Two</option>
                   <option value="3">Three</option>
-                </select>
-              </label>
-            </div> {% endcomment %}
+                </select> {% endcomment %}
+                {{form1.degree}}
+              </label> 
+            </div>
             <div class="apply-form-btns">
               
                 <button name = 'applyBtn' class="cs-btn w-20" type="submit">Easy Apply</button>

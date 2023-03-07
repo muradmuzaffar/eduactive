@@ -21,14 +21,15 @@ def auth(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         form1 = UserCreateForm(request.POST)
+        print(form1)
 
         if form1.is_valid():
             user = form1.save()
+            print(user)
             profile = Profile.objects.create(user = user,first_name = user.first_name,
                                              last_name = user.last_name,email = user.email,
             )
-           
-            
+                      
             return redirect('landing')
         else:
             messages.warning(request, 'ERROR!')

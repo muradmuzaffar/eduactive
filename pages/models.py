@@ -14,22 +14,13 @@ VAIWER_CHOICES = [
 DEGREE_CHOICES = [
     ("Bachelor", ("Bachelor")),
     ("Master", ("Master")),
-    ("PHD", ("PHD")),
+    ("Ph.D.", ("Ph.D.")),
     ("Exchange programme", ("Exchange programme")),
     ("Training programme", ("Training programme"))
 
 ]
 
-# EVALUATION_CHOICES = [
-#     ("Very Difficult; Great", ("Very Difficult; Great")),
-#     ("Not Difficult; Great", ("Not Difficult; Great")),
-#     ("Mid Difficult; Great", ("Mid Difficult; Great")),
-#     ("Easy; Not Good", ("Easy; Not Good")),
-#     ("Easy; Okay", ("Easy; Okay")),
-#     ("Difficult; Okay", ("Difficult; Okay")),
-#     ("Difficult; Great", ("Difficult; Great")),
 
-# ]
 
 REGION_CHOICES = [
     ("EU", ("EU")),
@@ -60,10 +51,6 @@ class Scholarship(models.Model):
 class University(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     qs_rank = models.CharField(max_length=50, blank=True, null=True)
-    # region_rank = models.CharField(max_length=50, blank=True, null=True)
-    # program_rank_world = models.CharField(max_length=50, blank=True, null=True)
-    # program_rank_region = models.CharField(max_length=50, blank=True, null=True)
-    # program_rank_state = models.CharField(max_length=50, blank=True, null=True) 
     program = models.CharField(max_length=100, blank=True, null=True)
     degree = models.CharField(max_length=100, blank=True, null=True,choices=DEGREE_CHOICES)
     study_duration = models.CharField(max_length=100, blank=True, null=True)
@@ -88,15 +75,14 @@ class University(models.Model):
     dedline = models.CharField(max_length=500, blank=True, null=True)
     result = models.CharField(max_length=500, blank=True, null=True)
     link = models.CharField(max_length=200, blank=True, null=True)
-    # evaluation = models.CharField(max_length=500, blank=True, null=True, choices=EVALUATION_CHOICES)
     bio = models.CharField(max_length=3000, blank=True, null=True)
 
 
 
     
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
 
 
 RESEARCH_CHOICES = [
@@ -115,15 +101,7 @@ RATING_CHOICES = [
 ]
 
 
-class Admission(models.Model):
-    gre = models.IntegerField()
-    toefl = models.IntegerField()
-    sop = models.FloatField()
-    lor = models.FloatField()
-    gpa = models.FloatField()
-    admit_chance = models.FloatField()
-    research = models.CharField(max_length=20, choices=RESEARCH_CHOICES)
-    rating = models.CharField(max_length=20, choices=RATING_CHOICES)
+
 
 
 
@@ -161,3 +139,11 @@ class Blogs(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Apply(models.Model):
+    name = models.CharField(max_length=100,blank=True,null=True)
+    email = models.EmailField(max_length=254,blank=True,null=True)
+
+    def __str__(self):
+        return self.name
+

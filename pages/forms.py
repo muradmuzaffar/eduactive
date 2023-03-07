@@ -1,20 +1,35 @@
 from django import forms
-from .models import Admission,Contact
+from .models import Contact,University,Apply
 from .models import DEGREE_CHOICES
+from django.core.validators import MaxValueValidator,MinValueValidator
 
-class AdmissionForm(forms.ModelForm):
-    gpa = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': '/100',
+
+options = University.objects.values_list('program', flat=True)
+
+
+class AdmissionForm(forms.Form):
+    gpa = forms.FloatField(widget=forms.NumberInput(attrs={
+        'placeholder': '/4',
         'class':"d-block cs-input mt-2"
-    }))
+    }), validators=[MinValueValidator(0), MaxValueValidator(4)])
 
-    gre = forms.CharField(widget=forms.TextInput(attrs={
+    gre = forms.IntegerField(widget=forms.NumberInput(attrs={
         'placeholder': '/340',
         'class':"d-block cs-input mt-2"
     }))
 
-    ielts = forms.CharField(widget=forms.TextInput(attrs={
+    ielts = forms.FloatField(widget=forms.NumberInput(attrs={
         'placeholder': '/9',
+        'class':"d-block cs-input mt-2"
+    }))
+
+    gmat = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'placeholder': '/800',
+        'class':"d-block cs-input mt-2"
+    }))
+
+    toefl = forms.IntegerField(widget=forms.NumberInput(attrs={
+        'placeholder': '/120',
         'class':"d-block cs-input mt-2"
     }))
 
@@ -22,18 +37,21 @@ class AdmissionForm(forms.ModelForm):
         'placeholder': 'select Degree',
         'class':"d-block cs-input mt-2",
     }), choices=DEGREE_CHOICES)
-    class Meta:
-        model = Admission
-        fields = ['gre','gpa','ielts','degree']
-        labels = {
-            'gre':'GRE Scores ( out of 340 )',
-            'toefl':'TOEFL Scores ( out of 120 )',
-            'sop':'Statement of Purpose -(SOP) Strength ( out of 5 )',
-            'lor':'Letter of Recommendation-(LOR) Strength ( out of 5 )',
-            'gpa':'Undergraduate GPA-CGPA ( out of 10 )',
-            'research':'Research Experience ( either 0 or 1 )',
-            'rating':'University Rating ( out of 5 )',
-        }
+
+    # program = forms.ChoiceField(widget=forms.Select(attrs={
+    #     'placeholder': 'select Degree',
+    #     'class':"d-block cs-input mt-2",
+    # }), choices=options[0:5])
+
+
+    def __init__(self, *args, **kwargs):
+        super(AdmissionForm, self).__init__(*args, **kwargs)
+        self.fields['gmat'].required = False
+        self.fields['gre'].required = False
+        self.fields['ielts'].required = False
+        self.fields['toefl'].required = False
+        
+
 
 
 
@@ -85,4 +103,24 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = ['first_name','last_name','email','number','message']
 
-        
+
+
+class ApplyForm(forms.ModelForm):
+    name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Enter Last Name',
+        'class':'cs-input mt-2',
+        'name':'lastName',
+        'id':'lastName',
+        'type':'text'
+    }))
+    
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'placeholder': 'sendme@mail.com',
+        'class':'cs-input mt-2',
+        'name':'email',
+        'id':'email',
+        'type':'email'
+    }))
+    class Meta:
+        model = Apply
+        fields = ['name','email']

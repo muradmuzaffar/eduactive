@@ -1,13 +1,15 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from .models import University, Admission,Blogs,Scholarship
+from .models import University,Blogs,Scholarship
 from .filters import ListingFiLters,ListingFiLtersScholarship
-from .forms import AdmissionForm,ContactForm
+from .forms import AdmissionForm,ContactForm,ApplyForm
 from django.contrib.auth.decorators import login_required
 
-
-
+ielts = 0
+gre = 0
+gmat = 0
+toefl = 0
 def landing(request):
-    
+
 
     if request.method == "POST":
         
@@ -16,15 +18,35 @@ def landing(request):
             if form1.is_valid():
 
                 gpa = form1.cleaned_data['gpa']
-                ielts = form1.cleaned_data['ielts']
-                universities = University.objects.filter(ielts__gte =ielts)
-     
-                print('*******************************')
-                universities = universities.order_by('qs_rank')[0]
-               
-                # request.session['universities'] = universities
-                print(universities)
-                return redirect("blogs")
+                degree = form1.cleaned_data['degree']
+
+                if form1.cleaned_data['ielts']:
+                    global ielts
+                    ielts = form1.cleaned_data['ielts']
+                
+                if form1.cleaned_data['gre']:
+                    global gre
+                    gre = form1.cleaned_data['gre']
+                
+                if form1.cleaned_data['gmat']:
+                    global gmat
+                    gmat = form1.cleaned_data['gmat']
+
+                if form1.cleaned_data['toefl']:
+                    global toefl
+                    toefl = form1.cleaned_data['toefl']
+                print(gmat)
+                print(gre)
+                universities = University.objects.filter(gpa__gte =gpa , ielts__gte = ielts, gmat__gte = gmat,
+                                                         gre__gte = gre,toefl__gte = toefl,degree =degree)
+                universities = universities.order_by('qs_rank')
+                context = {
+                    'universities':universities[0:5]
+
+                }
+                return render(request,'apply-request.html',context)
+            else:
+                return redirect('blogs')
 
             
            
@@ -47,24 +69,26 @@ def landing(request):
     return render(request, 'index.html', context)
 
 
-
 def apply_request(request):
-    # global university
-    # # universities = request.session.get('universities')
-    # universities = university()
-    # print('*******************************')
-    # print(universities)
-
-    # context = {
-    #     'universities':universities,
-
-    # }
-    
     return render(request, 'apply-request.html')
 
 
 
+def apply_form(request):
+    
+    if request.method== 'POST':
+            form = ApplyForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect("landing")
+    
+    form = ApplyForm()
+            
+    return render(request,'apply-form.html',{'form':form})
 
+
+def apply_done(request):
+    return render(request,'apply_done.html')
 
 
 
@@ -88,10 +112,10 @@ def scholarships(request):
     return render(request, 'scholarships.html',context)
 
 
-@login_required(login_url = 'log_in')
+# @login_required(login_url = 'log_in')
 def detail(request, id):
     university = get_object_or_404(University, id=id)
-    return render(request, 'detail.html', {'university': university})
+    return render(request, 'university-detail.html', {'university': university})
 
 
 def filters(request,):

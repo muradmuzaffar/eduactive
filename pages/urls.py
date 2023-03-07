@@ -11,6 +11,8 @@ urlpatterns = [
     path('scholarships', scholarships, name='scholarships'),
     path('scholarship/detail/<int:id>', scholarship_detail, name='scholarship_detail'),
     path('apply-request', apply_request, name='apply_request'),
+    path('apply-done', apply_done, name='apply_done'),
+    path('apply-form', apply_form, name='apply_form'),
     
 
 ]
