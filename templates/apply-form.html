@@ -16,15 +16,42 @@
                           {% csrf_token %}
                             <div class="logmailInput mb-4">
                               <label for="logMailid" class="form-label">Name</label>
-                              {{form.name}}
+                              {{form.first_name}}
                               <div class="invalid-feedback">
                                 Please fill in the field!
+                              </div>
+                            </div>
+                            <div class="lonpassInput mb-4">
+                              <label for="logPassId" class="form-label">Surname</label>
+                              <div class="input-group has-validation">
+                                {{form.last_name}}
+                                <div class="invalid-feedback">
+                                    Please fill in the field!
+                                </div>
                               </div>
                             </div>
                             <div class="lonpassInput mb-4">
                               <label for="logPassId" class="form-label">Email</label>
                               <div class="input-group has-validation">
                                 {{form.email}}
+                                <div class="invalid-feedback">
+                                    Please fill in the field!
+                                </div>
+                              </div>
+                            </div>
+                            <div class="lonpassInput mb-4">
+                              <label for="logPassId" class="form-label">Phone Number</label>
+                              <div class="input-group has-validation">
+                                {{form.number}}
+                                <div class="invalid-feedback">
+                                    Please fill in the field!
+                                </div>
+                              </div>
+                            </div>
+                            <div class="lonpassInput mb-4">
+                              <label for="logPassId" class="form-label">Your Message</label>
+                              <div class="input-group has-validation">
+                                {{form.message}}
                                 <div class="invalid-feedback">
                                     Please fill in the field!
                                 </div>

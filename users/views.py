@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from .forms import UserCreateForm, LoginForm
+from .forms import UserCreateForm, LoginForm,ProfileForm,UpdateUserForm
 from .models import Profile
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -29,7 +29,7 @@ def auth(request):
             profile = Profile.objects.create(user = user,first_name = user.first_name,
                                              last_name = user.last_name,email = user.email,
             )
-                      
+            login(request,user=user)
             return redirect('landing')
         else:
             messages.warning(request, 'ERROR!')
@@ -72,3 +72,55 @@ class MyPasswordChangeView(PasswordChangeView):
 
 class MyPasswordResetDoneView(PasswordResetDoneView):
     template_name='password-change-done.html'
+
+
+def profile(request):
+    # global user_form,profile_form
+    # user_form = UpdateUserForm(instance=request.user) 
+    # profile_form = ProfileForm(instance=request.user.profile)
+    
+
+    if request.method == 'POST':
+
+        if 'infoBtn' in request.POST:
+
+            # global user_form,profile_form
+            user_form = UpdateUserForm(request.POST, instance=request.user)
+            profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+            print('*****************')
+            # print(user_form)
+            print(profile_form.errors)
+            print(user_form.errors)
+
+            if  user_form.is_valid() and  profile_form.is_valid():
+                print('**************')
+                print('valid')
+                user_form.save()
+                profile_form.save()
+                messages.success(request, 'Your profile is updated successfully')
+                return redirect('profile')
+            
+        if 'backgroundBtn' in request.POST:
+            user_form = UpdateUserForm(request.POST, instance=request.user)
+            profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+            print('*****************')
+            print(user_form.errors)
+            print(profile_form.errors)
+
+            if user_form.is_valid() and  profile_form.is_valid():
+                print('**************')
+                print('valid')
+                profile_form.save()
+                # user_form.save()
+                messages.success(request, 'Your profile is updated successfully')
+                return redirect('profile')
+
+    
+    user_form = UpdateUserForm(instance=request.user) 
+    profile_form = ProfileForm(instance=request.user.profile)
+    return render(request=request, template_name="profile.html", context={"user":request.user, "user_form":"user_form", "profile_form":profile_form })
+
+
+
+
+        

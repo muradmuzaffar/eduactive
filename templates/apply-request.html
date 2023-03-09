@@ -17,19 +17,19 @@
                     <div class="university-list-item university-one-five p-2">
                         <div class="university-qs qs-first-last">QS <span>#{{university.qs_rank}}</span></div>
                         <h5 class="university-degree-name deegree-name-first-last">{{university.program}}</h5>
-                        <span class="university-loc loc-first-last">Texas University, San Antonio</span>
+                        <span class="university-loc loc-first-last">{{university.name}}</span>
                         <div class="university-details">
                             <div class="university-location location-first-last ">
-                                <span><img src="{% static 'assets/css/icons/others/location.svg' %}" alt="Location">Texas, San Antonio, ABŞ</span>
+                                <span><img src="{% static 'assets/css/icons/others/location.svg' %}" alt="Location">{{university.city}}, {{university.state}}</span>
                             </div>
                             <div class="university-date date-first-last ">
-                                <span><img src="{% static 'assets/css/icons/others/time.svg' %}" alt="Date">11.26.2022 (2 months)</span>
+                                <span><img src="{% static 'assets/css/icons/others/time.svg' %}" alt="Date">{{university.deadline}}</span>
                             </div>
                             <div class="university-money money-last-first ">
-                                <span><img src="{% static 'assets/css/icons/others/money.svg' %}" alt="Money">$35,000 Annual</span>
+                                <span><img src="{% static 'assets/css/icons/others/money.svg' %}" alt="Money">{{university.tution_fee}}</span>
                             </div>
                         </div>
-                        <p class="university-duration duration-first-last"><span>Program duration</span> 9 m</p>
+                        <p class="university-duration duration-first-last"><span>Study duration</span>  {{university.study_duration}}</p>
                     </div>
                 </a>
                 {% endfor %}

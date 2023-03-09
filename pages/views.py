@@ -13,12 +13,15 @@ def landing(request):
 
     if request.method == "POST":
         
+        
         if 'applyBtn' in request.POST:
             form1 = AdmissionForm(request.POST)
             if form1.is_valid():
 
                 gpa = form1.cleaned_data['gpa']
                 degree = form1.cleaned_data['degree']
+                study_field = form1.cleaned_data['study_field']
+                region = form1.cleaned_data['region']
 
                 if form1.cleaned_data['ielts']:
                     global ielts
@@ -37,8 +40,9 @@ def landing(request):
                     toefl = form1.cleaned_data['toefl']
                 print(gmat)
                 print(gre)
-                universities = University.objects.filter(gpa__gte =gpa , ielts__gte = ielts, gmat__gte = gmat,
-                                                         gre__gte = gre,toefl__gte = toefl,degree =degree)
+                universities = University.objects.filter(gpa__lte =gpa , ielts__lte = ielts, gmat__gte = gmat,
+                                                         gre__gte = gre,toefl__gte = toefl,degree =degree,
+                                                         region=region,study_field = study_field )
                 universities = universities.order_by('qs_rank')
                 context = {
                     'universities':universities[0:5]
@@ -69,11 +73,12 @@ def landing(request):
     return render(request, 'index.html', context)
 
 
+
+
 def apply_request(request):
     return render(request, 'apply-request.html')
 
-
-
+@login_required(login_url = 'authenticate')
 def apply_form(request):
     
     if request.method== 'POST':
@@ -112,9 +117,10 @@ def scholarships(request):
     return render(request, 'scholarships.html',context)
 
 
-# @login_required(login_url = 'log_in')
+@login_required(login_url = 'authenticate')
 def detail(request, id):
     university = get_object_or_404(University, id=id)
+    print(university.fee_waiver)
     return render(request, 'university-detail.html', {'university': university})
 
 

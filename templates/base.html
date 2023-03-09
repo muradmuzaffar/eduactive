@@ -41,11 +41,9 @@
                   </li>
                 </ul>
                 {% if user.is_authenticated %}
-                {% comment %} <div class="profile-link-img"> {% endcomment %}
-                  <a class="text-decoration-none profile-link" title="Profile" href="profile.html">
+                  <a class="text-decoration-none profile-link" title="Profile" href="{% url 'profile' %}">
                      <img src="{% static 'assets/css/icons/others/profile.svg' %}" alt="Profile">
                    </a>
-                {% comment %} </div> {% endcomment %}
 
                 {% else %}
                 <a class="cs-btn login-link" href="{% url 'authenticate'%}" title="Login">Login</a>

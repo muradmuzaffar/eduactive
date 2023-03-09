@@ -10,15 +10,15 @@
       <h1 class="university-profile-title">University Profile</h1>
       <div class="uni-profile-details d-flex align-items-center justify-content-between flex-wrap">
         <div class="uni-info">
-            <div class="uni-degree">Economics/ Bachelor</div>
-            <div class="uni-loc">Texas University, San Antonio</div>
-            <span class="me-2 qs-class">QS <span>#34</span></span>
-            <span class="me-2 qs-class">QS <span>#34</span></span>
-            <span class="qs-class">QS <span>#34</span></span>
+            <div class="uni-degree">{{university.study_field}} / {{university.program}} / {{university.degree}}</div>
+            {% comment %} <div class="uni-loc">Texas University, San Antonio</div> {% endcomment %}
+            <span class="me-2 qs-class">QS <span>#{{university.qs_rank}}</span></span>
+            {% comment %} <span class="me-2 qs-class">QS <span>#34</span></span>
+            <span class="qs-class">QS <span>#34</span></span> {% endcomment %}
         </div>
         <div class="uni-apply-link">
-            <a class="text-decoration-none d-block cs-btn" href="#">Apply</a>
-            <div>$70 application fee</div>
+            <a class="text-decoration-none d-block cs-btn" href="{{university.link}}">Apply</a>
+            <div>${{university.fee}} application fee</div>
         </div>
       </div>
       <div class="uni-programs-details d-lg-flex justify-content-between align-items-start">
@@ -29,23 +29,30 @@
           </p>
         </div>
         <div class="uni-program-extend">
-          <p class="uni-duration">Program duration: <span>9 months</span></p>
+          <p class="uni-duration">Program duration: <span>  {{university.study_duration}}</span></p>
           <p class="uni-fee">
-            <img src="{% static 'assets/css/icons/others/green-tick.svg' %}" alt="">
-            Free Application <span>(Application Fee Waiver)</span>
+
+            {% comment %} {% if university.fee_waiver == 'Available' %}
+              <img src="{% static 'assets/css/icons/others/green-tick.svg' %}" alt="">
+            {%else%}
+            <img src="{% static 'assets/css/icons/others/cancel.svg' %}" alt="">
+
+            {% endif %} {% endcomment %}
+
+            Free Application is {{university.fee_waiver}} <span>(Application Fee Waiver)</span>
           </p>
           <ul class="list-unstyled">
             <li class="list-loc mb-2 d-flex align-items-center">
               <img src="{% static 'assets/css/icons/others/location.svg' %}" alt="">
-              <span>Texas, San Antonio, ABŞ</span>
+              <span>{{university.city}}, {{university.state}}</span>
             </li>
             <li class="list-date mb-2 d-flex align-items-center">
               <img src="{% static 'assets/css/icons/others/time.svg' %}" alt="">
-              <span>11.26.2022 (2 months)</span>
+              <span>{{university.deadline}}</span>
             </li>
             <li class="list-price d-flex align-items-center">
               <img src="{% static 'assets/css/icons/others/money.svg' %}" alt="">
-              <span>$35,000 yearly</span>
+              <span>{{university.tution_fee}}</span>
             </li>
           </ul>
         </div>

@@ -24,104 +24,47 @@
             <div class="form-first-inputs">
               <label for="gpa-label"
                 >GPA
-                {% comment %} <input
-                  placeholder="/100"
-                  id="gpa-label"
-                  name="gpaVal"
-                  class="d-block cs-input mt-2"
-                  type="number"
-                /> {% endcomment %}
+                
                 {{form1.gpa}}
               </label>
               <label for="ielts-label"
                 >IELTS
-                {% comment %} <input
-                  placeholder="/9.0"
-                  id="ielts-label"
-                  name="ieltsVal"
-                  class="d-block cs-input mt-2"
-                  type="number"
-                /> {% endcomment %}
+                
                 {{form1.ielts}}
               </label>
               <label for="toefl-label"
                 >TOEFL
-                {% comment %} <input
-                  placeholder="/120"
-                  id="toefl-label"
-                  name="toeflVal"
-                  class="d-block cs-input mt-2"
-                  type="number"
-                /> {% endcomment %}
+                
                 {{form1.toefl}}
               </label>
-              {% comment %} <label for="academic-label"
+              <label for="academic-label"
                 >Study Program 
-                <select
-                  id="academic-label"
-                  name="academicVal"
-                  class="form-select cs-input mt-2"
-                  aria-label="Default select example"
-                >
-                  <option selected>Select Degree</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>   {% endcomment %}
-                {% comment %} {{form1.program}}  {% endcomment %}
+
+                {{form1.study_field}}  
               </label>
             </div>
             <div class="form-second-inputs">
               <label for="gre-label"
                 >GRE
-                {% comment %} <input
-                  placeholder="/340"
-                  name="greVal"
-                  id="gre-label"
-                  class="d-block cs-input mt-2"
-                  type="number"
-                /> {% endcomment %}
+
                 {{form1.gre}}
               </label>
               <label for="gmat-label"
                 >GMAT
-                {% comment %} <input
-                  placeholder="/800"
-                  name="gmatVal"
-                  id="gmat-label"
-                  class="d-block cs-input mt-2"
-                  type="number"
-                /> {% endcomment %}
+
                 {{form1.gmat}}
               </label>
-              {% comment %} <label for="sat-label"
-                >SAT
-                <input
-                  placeholder="/1300"
-                  name="satVal"
-                  id="sat-label"
-                  class="d-block cs-input mt-2"
-                  type="number"
-                />
-              </label>{% endcomment %}
+              <label for="sat-label"
+                >Region
+                {{form1.region}}
+              </label>
               <label for="study-label"
                 >Degree
-                {% comment %} <select
-                  id="study-label"
-                  name="studyVal"
-                  class="form-select cs-input mt-2"
-                  aria-label="Default select example"
-                >
-                  <option selected>Select Field</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select> {% endcomment %}
+
                 {{form1.degree}}
               </label> 
             </div>
-            <div class="apply-form-btns">
-              
+            <div class="apply-form-btns">             
                 <button name = 'applyBtn' class="cs-btn w-20" type="submit">Easy Apply</button>
               <a
                 class="search-programs"

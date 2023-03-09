@@ -1,10 +1,9 @@
 from django import forms
 from .models import Contact,University,Apply
-from .models import DEGREE_CHOICES
+from .models import DEGREE_CHOICES,FIELD_CHOICES,REGION_CHOICES
 from django.core.validators import MaxValueValidator,MinValueValidator
 
 
-options = University.objects.values_list('program', flat=True)
 
 
 class AdmissionForm(forms.Form):
@@ -38,10 +37,15 @@ class AdmissionForm(forms.Form):
         'class':"d-block cs-input mt-2",
     }), choices=DEGREE_CHOICES)
 
-    # program = forms.ChoiceField(widget=forms.Select(attrs={
-    #     'placeholder': 'select Degree',
-    #     'class':"d-block cs-input mt-2",
-    # }), choices=options[0:5])
+    region = forms.ChoiceField(widget=forms.Select(attrs={
+        'placeholder': 'select Degree',
+        'class':"d-block cs-input mt-2",
+    }), choices=REGION_CHOICES)
+
+    study_field = forms.ChoiceField(widget=forms.Select(attrs={
+        'placeholder': 'select Degree',
+        'class':"d-block cs-input mt-2",
+    }), choices=FIELD_CHOICES)
 
 
     def __init__(self, *args, **kwargs):
@@ -106,7 +110,16 @@ class ContactForm(forms.ModelForm):
 
 
 class ApplyForm(forms.ModelForm):
-    name = forms.CharField(widget=forms.TextInput(attrs={
+    first_name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Enter Name',
+        'class':'cs-input mt-2',
+        'name':'firstName',
+        'id':'firstName',
+        'type':'text'
+
+    }))
+
+    last_name = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Enter Last Name',
         'class':'cs-input mt-2',
         'name':'lastName',
@@ -121,6 +134,24 @@ class ApplyForm(forms.ModelForm):
         'id':'email',
         'type':'email'
     }))
+
+    number = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': '+994 (00) 000 00 00',
+        'class':'cs-input mt-2',
+        'name':'phoneNumber',
+        'id':'phoneNumber',
+        'type':'number',
+        'pattern':""
+
+    }))
+    message = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'I am reaching you for',
+        'class':'cs-input mt-2',
+        'name':'message',
+        'id':'message',
+
+    }))
+
     class Meta:
-        model = Apply
-        fields = ['name','email']
+        model = Contact
+        fields = ['first_name','last_name','email','number','message']

@@ -6,6 +6,7 @@ from .views import *
 urlpatterns = [
     path('authenticate', auth, name='authenticate'),
     path('logout',log_out,name='log_out'),
+    path('profile',profile,name='profile'),
 
     
     path('reset_password/',auth_views.PasswordResetView.as_view(template_name='reset_password.html'),name='reset_password'),
