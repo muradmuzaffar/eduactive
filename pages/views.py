@@ -4,10 +4,10 @@ from .filters import ListingFiLters,ListingFiLtersScholarship
 from .forms import AdmissionForm,ContactForm,ApplyForm
 from django.contrib.auth.decorators import login_required
 
-ielts = 0
-gre = 0
-gmat = 0
-toefl = 0
+# ielts = 0
+# gre = 0
+# gmat = 0
+# toefl = 0
 def landing(request):
 
 
@@ -22,27 +22,40 @@ def landing(request):
                 degree = form1.cleaned_data['degree']
                 study_field = form1.cleaned_data['study_field']
                 region = form1.cleaned_data['region']
+                ielts = form1.cleaned_data['ielts']
+                toefl = form1.cleaned_data['toefl']
+                gmat = form1.cleaned_data['gmat']
+                gre = form1.cleaned_data['gre']
+
+                
+
+
 
                 if form1.cleaned_data['ielts']:
-                    global ielts
-                    ielts = form1.cleaned_data['ielts']
-                
-                if form1.cleaned_data['gre']:
-                    global gre
-                    gre = form1.cleaned_data['gre']
-                
-                if form1.cleaned_data['gmat']:
-                    global gmat
-                    gmat = form1.cleaned_data['gmat']
-
-                if form1.cleaned_data['toefl']:
-                    global toefl
-                    toefl = form1.cleaned_data['toefl']
-                print(gmat)
-                print(gre)
-                universities = University.objects.filter(gpa__lte =gpa , ielts__lte = ielts, gmat__gte = gmat,
-                                                         gre__gte = gre,toefl__gte = toefl,degree =degree,
+                    universities = University.objects.filter(gpa__lte =gpa , ielts__lte = ielts,degree =degree,
                                                          region=region,study_field = study_field )
+                
+                elif form1.cleaned_data['ielts'] and form1.cleaned_data['gre']:
+                    universities = University.objects.filter(gpa__lte =gpa , ielts__lte = ielts,degree =degree,
+                                                         region=region,gre__lte = gre,study_field = study_field )
+                
+                elif form1.cleaned_data['ielts'] and form1.cleaned_data['gmat']:
+                    universities = University.objects.filter(gpa__lte =gpa , ielts__lte = ielts,degree =degree,
+                                                         region=region,gmat__lte = gmat,study_field = study_field )
+
+                elif form1.cleaned_data['toefl']:
+                    universities = University.objects.filter(gpa__lte =gpa , toefl__lte = toefl,degree =degree,
+                                                         region=region,study_field = study_field )
+                
+                elif form1.cleaned_data['toefl'] and form1.cleaned_data['gre']:
+                    universities = University.objects.filter(gpa__lte =gpa , toefl__lte = toefl,degree =degree,
+                                                         region=region,gre__lte = gre,study_field = study_field )
+                
+                elif form1.cleaned_data['toefl'] and form1.cleaned_data['gmat']:
+                    universities = University.objects.filter(gpa__lte =gpa , toefl__lte = toefl,degree =degree,
+                                                         region=region,gmat__lte = gmat,study_field = study_field )
+
+                
                 universities = universities.order_by('qs_rank')
                 context = {
                     'universities':universities[0:5]

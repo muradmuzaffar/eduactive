@@ -7,9 +7,11 @@
 <main class="sections">
     <section class="apply-request">
         <div class="container">
+
+            {% if universities %}
             <div class="apply-request-message">
                 <h1 class="request-title">What a background! Congratulations!</h1>
-                <p class="request-message">You have <span class="request-rate">99.99%</span> admission chance to <span class="education-programs">one of the these education programs</span></p>
+                <p class="request-message">You have <span class="request-rate">high</span> admission chance to <span class="education-programs">one of the these education programs</span></p>
             </div>
             <div class="university-list d-flex flex-wrap align-items-center justify-content-center">
                 {% for university in universities  %}
@@ -40,6 +42,13 @@
                 <p>Let’s appreciate this chance with a great application guided by our expert education consultants</p>
                 <a title="Application Process" class="cs-btn w-100" href="{% url 'apply_form' %}">Start Application Process</a>
             </div>
+            {% else %}
+            <div class="apply-request-message">
+                <h1 class="request-title">Ooops!</h1>
+                <p class="request-message">We have <span class="request-rate">no</span> study program that matches <span class="education-programs">your background</span></p>
+            </div>
+            {% endif %}
+            
         </div>
     </section>
 </main>
