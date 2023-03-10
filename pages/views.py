@@ -97,8 +97,9 @@ def apply_form(request):
     if request.method== 'POST':
             form = ApplyForm(request.POST)
             if form.is_valid():
+                print('valid')
                 form.save()
-                return redirect("landing")
+                return redirect("apply_done")
     
     form = ApplyForm()
             
@@ -106,7 +107,7 @@ def apply_form(request):
 
 
 def apply_done(request):
-    return render(request,'apply_done.html')
+    return render(request,'apply-done.html')
 
 
 

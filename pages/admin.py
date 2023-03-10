@@ -9,6 +9,8 @@ from import_export.admin import ImportExportModelAdmin
 admin.site.register(Contact)
 admin.site.register(Apply)
 admin.site.register(Blogs)
+
+
 @admin.register(University)
 class userdata(ImportExportModelAdmin):
     pass
