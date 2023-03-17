@@ -4,11 +4,18 @@ from django import forms
 from .models import University,Scholarship, DEGREE_CHOICES, REGION_CHOICES
 
 
-class ListingFiLters(django_filters.FilterSet):
+class ListingFiLtersUniversity(django_filters.FilterSet):
+    degree = django_filters.MultipleChoiceFilter(
+        choices = DEGREE_CHOICES,
+        widget = forms.CheckboxSelectMultiple(attrs={'class':'form-check-input', 'id':'degree'} ,))
+    
+    region = django_filters.MultipleChoiceFilter(
+        choices = REGION_CHOICES,
+        widget = forms.CheckboxSelectMultiple(attrs={'class':'form-check-input', 'id':'degree'} ,))
     class Meta:
         model = University
         fields = {
-            'fee_waiver': ['exact'],
+            # 'fee_waiver': ['exact'],
             'region':  ['exact'],
             'degree':  ['exact'],
         }

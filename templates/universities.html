@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+
+
+
+    <div class="dummy-height"></div>
+<main class="sections">
+  <section class="scholarship">
+    <div class="container">
+      <div class="scholarship-wrapper">
+        <div class="row">
+          <div class="col-12 col-lg-4 col-xl-3">
+            <div class="scholarship-filter">
+              <div class="filter-heading">Filters</div>
+              
+              
+              <div class="all-filters">
+                <div class="degree-filter filterization">
+                  
+                  <form method='GET'>
+                    {% csrf_token %}
+                    <span class="filter-title">Degree</span>
+                    {% for degree in filter_university.form.degree %}
+                    <div class="form-check d-flex align-items-center"> 
+                        {{degree.tag}} 
+                        <label class="form-check-label" for="{{degree.id_for_label}}">{{degree.choice_label}}
+                        </label>
+                    </div>
+                    {% endfor %}
+
+                    <span class="filter-title">Region</span>
+                    {% for  region in filter_university.form.region  %}
+                    <div class="form-check d-flex align-items-center"> 
+                      {{region.tag}} 
+                      <label class="form-check-label" for="{{region.id_for_label}}">{{region.choice_label}}
+                      </label>
+                    </div>
+                    
+                    {% endfor %}
+
+                    
+                     
+
+                    <button class="cs-btn login-link" type='submit'>Submit</button>
+    
+                  </form>
+
+                  {% comment %} <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="bachelorCheck"
+                    />
+                    <label class="form-check-label" for="bachelorCheck">
+                      Bachelor
+                    </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="masterCheck"
+                    />
+                    <label class="form-check-label" for="masterCheck">
+                      Master
+                    </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="phdCheck"
+                    />
+                    <label class="form-check-label" for="phdCheck">
+                      Ph.D.
+                    </label>
+                  </div> {% endcomment %}
+                </div>
+                {% comment %} <div class="region-filter filterization">
+                  <span class="filter-title">State, Region</span>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="usaCheck"
+                    />
+                    <label class="form-check-label" for="usaCheck"> USA </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="europeCheck"
+                    />
+                    <label class="form-check-label" for="europeCheck">
+                      Europe
+                    </label>
+                  </div>
+                </div>
+                <div class="study-filter filterization">
+                  <span class="filter-title">Study Field</span>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="econimcsCheck"
+                    />
+                    <label class="form-check-label" for="econimcsCheck">
+                      Economics
+                    </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="businessCheck"
+                    />
+                    <label class="form-check-label" for="businessCheck">
+                      Business Management
+                    </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="sosialSciencesCheck"
+                    />
+                    <label class="form-check-label" for="sosialSciencesCheck">
+                      Social Sciences
+                    </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="compsciencesCheck"
+                    />
+                    <label class="form-check-label" for="compsciencesCheck">
+                      Computer Sciences,IT
+                    </label>
+                  </div>
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="agricultureCheck"
+                    />
+                    <label class="form-check-label" for="agricultureCheck">
+                      Agriculture
+                    </label>
+                  </div>
+                </div>
+                <div class="free-filter filterization">
+                  <div class="form-check d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value=""
+                      id="freeCheck"
+                    />
+                    <label class="form-check-label" for="freeCheck">
+                      Free Apply
+                    </label>
+                  </div>
+                </div> {% endcomment %}
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-8 col-xl-9">
+            <div class="study-program-wrapper overflow-hidden position-relative">
+              <div class="study-programs">
+                    <div class="study-programs-heading">
+                      Study Programs <span></span>
+                    </div>
+                    <div class="study-programs-list">
+
+                      {% for university in filter_university.qs %}
+                      <a class="text-decoration-none" href="{%url 'detail' university.id%}">
+                        <div class="study-program-list-item">
+                          <h4 class="program-title">
+                            {{university.program}}
+                          </h4>
+                          <p class="program-desc">
+                            {{university.bio}}
+                          </p>
+                          <div
+                            class="program-details d-flex align-items-center justify-content-between flex-wrap"
+                          >
+                            <div class="program-degree d-flex align-items-center">
+                              <img
+                                src="{% static 'assets/css/icons/others/degree.svg' %}"
+                                alt="Program Degree"
+                              />
+                              <span>{{university.degree}}</span>
+                            </div>
+                            <div class="program-time d-flex align-items-center">
+                              <img
+                                src="{% static 'assets/css/icons/others/time.svg' %}"
+                                alt="Program Degree"
+                              />
+                              <span>{{university.deadline}}</span>
+                            </div>
+                            <div class="program-money d-flex align-items-center">
+                              <img
+                                src="{% static 'assets/css/icons/others/money.svg' %}"
+                                alt="Program Degree"
+                              />
+                              <span>${{university.fee}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      {% endfor %}
+                      
+                    </div>
+              </div>
+              {% comment %} <div class="study-program-list-block">
+                <div class="row align-items-center">
+                  <div class="col-12 col-xl-7">
+                    <div class="program-list-block-txt">
+                      <span>Your dream university is probably hidden in this list 😉</span>
+                      <p>Time to explore +500 education programs from top 1000 universities!</p>
+                      <a class="text-decoration-none cs-btn" href="subscribe-plans.html">Subscribe Now</a>
+                    </div>
+                  </div>
+                  <div class="col-12 col-xl-5">
+                    <div class="program-list-block-img">
+                      <img src="{% static 'assets/img/university-non-animated.png' %}" alt="University Animated" />
+                    </div>
+                  </div>
+                </div>
+              </div> {% endcomment %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock main %}

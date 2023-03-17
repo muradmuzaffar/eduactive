@@ -1,13 +1,10 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from .models import University,Blogs,Scholarship
-from .filters import ListingFiLters,ListingFiLtersScholarship
+from .filters import ListingFiLtersUniversity,ListingFiLtersScholarship
 from .forms import AdmissionForm,ContactForm,ApplyForm
 from django.contrib.auth.decorators import login_required
 
-# ielts = 0
-# gre = 0
-# gmat = 0
-# toefl = 0
+
 def landing(request):
 
 
@@ -108,6 +105,18 @@ def apply_form(request):
 
 def apply_done(request):
     return render(request,'apply-done.html')
+
+def universities(request):
+    universities = University.objects.all()
+    filter_university = ListingFiLtersUniversity(request.GET, queryset=universities)
+
+
+
+    context  = {
+        'universities':universities,
+        'filter_university':filter_university,
+    }
+    return render(request,'universities.html',context)
 
 
 
