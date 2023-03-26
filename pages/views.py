@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404,redirect
-from .models import University,Blogs,Scholarship
+from .models import University,Blogs,Scholarship,Apply
 from .filters import ListingFiLtersUniversity,ListingFiLtersScholarship
 from .forms import AdmissionForm,ContactForm,ApplyForm
 from django.contrib.auth.decorators import login_required
@@ -86,6 +86,17 @@ def landing(request):
 
 
 def apply_request(request):
+    print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
+    print(request.user.email)
+    if request.method == 'POST':
+        Apply.objects.create(email = request.user.email)
+        print('***************')
+        print(request.user.email)
+
+        return redirect('landing')
+    else:
+        return redirect('blogs')
+    
     return render(request, 'apply-request.html')
 
 @login_required(login_url = 'authenticate')
@@ -142,8 +153,14 @@ def scholarships(request):
 
 @login_required(login_url = 'authenticate')
 def detail(request, id):
+
+    
     university = get_object_or_404(University, id=id)
-    print(university.fee_waiver)
+    if request.method == 'POST':
+        Apply.objects.create(first_name = request.user.first_name,last_name = request.user.last_name,email = request.user.email,university_name = university.name,
+                             program = university.program,gpa = request.user.profile.gpa,gre = request.user.profile.gre,
+                             ielts = request.user.profile.ielts,toefl = request.user.profile.toefl,gmat = request.user.profile.gmat,number = request.user.profile.phone_number)
+        return redirect('apply_done')
     return render(request, 'university-detail.html', {'university': university})
 
 

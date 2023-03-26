@@ -40,7 +40,14 @@
             <div class="start-application-process text-center">
                 
                 <p>Let’s appreciate this chance with a great application guided by our expert education consultants</p>
-                <a title="Application Process" class="cs-btn w-100" href="{% url 'apply_form' %}">Start Application Process</a>
+                <form method='post'>
+                    {% csrf_token %}
+                    <input type='hidden'></input>
+                    <button title="Application Process" class="cs-btn w-100" type='submit'>Start Application Process</button>
+
+
+                </form>
+                
             </div>
             {% else %}
             <div class="apply-request-message">

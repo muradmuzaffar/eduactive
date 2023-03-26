@@ -17,7 +17,14 @@
             <span class="qs-class">QS <span>#34</span></span> {% endcomment %}
         </div>
         <div class="uni-apply-link">
-            <a class="text-decoration-none d-block cs-btn" href="{{university.link}}">Apply</a>
+          <form method='post'>
+            {% csrf_token %}
+            <input type='hidden'></input>
+            <button title="Application Process" class="text-decoration-none d-block cs-btn" type='submit'>Start Application Process</button>
+
+
+          </form>
+            {% comment %} <a class="text-decoration-none d-block cs-btn" href="{{university.link}}">Apply</a> {% endcomment %}
             <div>${{university.fee}} application fee</div>
         </div>
       </div>

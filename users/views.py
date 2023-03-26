@@ -76,13 +76,12 @@ class MyPasswordResetDoneView(PasswordResetDoneView):
 
 def profile(request):
     # global user_form,profile_form
-    # user_form = UpdateUserForm(instance=request.user) 
-    # profile_form = ProfileForm(instance=request.user.profile)
+    user_form = UpdateUserForm(instance=request.user) 
+    profile_form = ProfileForm(instance=request.user.profile)
     
 
     if request.method == 'POST':
 
-        if 'infoBtn' in request.POST:
 
             # global user_form,profile_form
             user_form = UpdateUserForm(request.POST, instance=request.user)
@@ -100,20 +99,7 @@ def profile(request):
                 messages.success(request, 'Your profile is updated successfully')
                 return redirect('profile')
             
-        if 'backgroundBtn' in request.POST:
-            user_form = UpdateUserForm(request.POST, instance=request.user)
-            profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
-            print('*****************')
-            print(user_form.errors)
-            print(profile_form.errors)
-
-            if user_form.is_valid() and  profile_form.is_valid():
-                print('**************')
-                print('valid')
-                profile_form.save()
-                # user_form.save()
-                messages.success(request, 'Your profile is updated successfully')
-                return redirect('profile')
+        
 
     
     user_form = UpdateUserForm(instance=request.user) 

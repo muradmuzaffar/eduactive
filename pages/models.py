@@ -204,6 +204,13 @@ class Blogs(models.Model):
 class Apply(models.Model):
     first_name = models.CharField(max_length=100,blank=True,null=True)
     last_name = models.CharField(max_length=100,blank=True,null=True)
+    university_name = models.CharField(max_length=250,blank=True,null=True)
+    program = models.CharField(max_length=250,blank=True,null=True)
+    gre = models.CharField(max_length=100, blank=True, null=True)
+    gpa = models.CharField(max_length=100, blank=True, null=True)
+    ielts = models.CharField(max_length=100, blank=True, null=True)
+    toefl = models.CharField(max_length=100, blank=True, null=True)
+    gmat = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=100,blank=True,null=True)
     number = models.CharField(max_length=100,blank=True,null=True)
     message = models.TextField(blank=True,null=True)

@@ -3,7 +3,7 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
 from .models import GENDER_CHOICES
-from pages.models import DEGREE_CHOICES
+from pages.models import DEGREE_CHOICES,FIELD_CHOICES
 
 
 class LoginForm(forms.Form):
@@ -174,11 +174,10 @@ class ProfileForm(forms.ModelForm):
 
     }))
 
-    speciality = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Enter Speciality',
-        'class':'cs-input mt-2',
-        'type':'text'
-    }))
+    study_program = forms.ChoiceField(widget=forms.Select(attrs={
+        'placeholder': 'select Gender',
+        'class':"d-block cs-input mt-2",
+    }), choices=FIELD_CHOICES)
 
     class Meta:
         model = Profile
