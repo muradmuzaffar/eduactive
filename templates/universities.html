@@ -28,13 +28,34 @@
                         <label class="form-check-label" for="{{degree.id_for_label}}">{{degree.choice_label}}
                         </label>
                     </div>
-                    {% endfor %}
+                    {% endfor %}<br>
 
                     <span class="filter-title">Region</span>
                     {% for  region in filter_university.form.region  %}
                     <div class="form-check d-flex align-items-center"> 
                       {{region.tag}} 
                       <label class="form-check-label" for="{{region.id_for_label}}">{{region.choice_label}}
+                      </label>
+                    </div>
+                    
+                    {% endfor %}<br>
+
+
+                    <span class="filter-title">Fee Vaiwer</span>
+                    {% for  fee_waiver in filter_university.form.fee_waiver  %}
+                    <div class="form-check d-flex align-items-center"> 
+                      {{fee_waiver.tag}} 
+                      <label class="form-check-label" for="{{fee_waiver.id_for_label}}">{{fee_waiver.choice_label}}
+                      </label>
+                    </div>
+                    
+                    {% endfor %}<br>
+
+                    <span class="filter-title">Study Field</span>
+                    {% for  study_field in filter_university.form.study_field  %}
+                    <div class="form-check d-flex align-items-center"> 
+                      {{study_field.tag}} 
+                      <label class="form-check-label" for="{{study_field.id_for_label}}">{{study_field.choice_label}}
                       </label>
                     </div>
                     
