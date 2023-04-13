@@ -3,6 +3,8 @@ from .models import University,Blogs,Scholarship,Apply
 from .filters import ListingFiLtersUniversity,ListingFiLtersScholarship
 from .forms import AdmissionForm,ContactForm,ApplyForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.shortcuts import render
 
 
 def landing(request):
@@ -86,8 +88,6 @@ def landing(request):
 
 
 def apply_request(request):
-    print('&&&&&&&&&&&&&&&&&&&&&&&&&&&&')
-    print(request.user.email)
     if request.method == 'POST':
         Apply.objects.create(email = request.user.email)
         print('***************')
@@ -120,6 +120,7 @@ def apply_done(request):
 def universities(request):
     universities = University.objects.all()
     filter_university = ListingFiLtersUniversity(request.GET, queryset=universities)
+    
 
 
 

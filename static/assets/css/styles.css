@@ -3112,3 +3112,10 @@ body {
     padding: 10px;
   }
 }
+
+
+
+/* Addition */
+.needs-validation label{
+  width: 49%;
+}

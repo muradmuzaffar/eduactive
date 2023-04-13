@@ -12,7 +12,7 @@
         <div class="uni-info">
             <div class="uni-degree">{{university.study_field}} / {{university.program}} / {{university.degree}}</div>
             {% comment %} <div class="uni-loc">Texas University, San Antonio</div> {% endcomment %}
-            <span class="me-2 qs-class">QS <span>#{{university.qs_rank}}</span></span>
+            <span class="me-2 qs-class">{{university.name}} <span> / QS #{{university.qs_rank}}</span></span>
             {% comment %} <span class="me-2 qs-class">QS <span>#34</span></span>
             <span class="qs-class">QS <span>#34</span></span> {% endcomment %}
         </div>
@@ -36,7 +36,7 @@
           </p>
         </div>
         <div class="uni-program-extend">
-          <p class="uni-duration">Program duration: <span>  {{university.study_duration}}</span></p>
+          <p class="uni-duration">Program duration: <span>  {{university.study_duration}} years</span> </p>
           <p class="uni-fee">
 
             {% comment %} {% if university.fee_waiver == 'Available' %}

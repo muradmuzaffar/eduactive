@@ -1,11 +1,16 @@
-{% extends "base.html" %}
 
-{% load static %}
+{% extends "base.html" %} {% load static %}
 
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 {% block main %}
-  
 
-    <div class="dummy-height"></div>
+<div class="dummy-height"></div>
 <main class="sections">
   <section class="university-apply">
     <div class="container">
@@ -19,54 +24,28 @@
             universities, check your admission probability and apply to the
             programs with a few clicks.
           </p>
-          <form method = 'post' class="easy-apply-form" name="easyApplyForm"  >
+          <form method="post" class="easy-apply-form" name="easyApplyForm">
             {% csrf_token %}
             <div class="form-first-inputs">
-              <label for="gpa-label"
-                >GPA
-                
-                {{form1.gpa}}
-              </label>
-              <label for="ielts-label"
-                >IELTS
-                
-                {{form1.ielts}}
-              </label>
-              <label for="toefl-label"
-                >TOEFL
-                
-                {{form1.toefl}}
-              </label>
+              <label for="gpa-label">GPA {{form1.gpa}} </label>
+              <label for="ielts-label">IELTS {{form1.ielts}} </label>
+              <label for="toefl-label">TOEFL {{form1.toefl}} </label>
               <label for="academic-label"
-                >Study Program 
-
-                {{form1.study_field}}  
+                >Study Program {{form1.study_field}}
               </label>
             </div>
             <div class="form-second-inputs">
-              <label for="gre-label"
-                >GRE
-
-                {{form1.gre}}
-              </label>
-              <label for="gmat-label"
-                >GMAT
-
-                {{form1.gmat}}
-              </label>
-              <label for="sat-label"
-                >Region
-                {{form1.region}}
-              </label>
-              <label for="study-label"
-                >Degree
-
-                {{form1.degree}}
-              </label> 
+              <label for="gre-label">GRE {{form1.gre}} </label>
+              <label for="gmat-label">GMAT {{form1.gmat}} </label>
+              <label for="sat-label">Region {{form1.region}} </label>
+              <label for="study-label">Degree {{form1.degree}} </label>
             </div>
-            <div class="apply-form-btns">             
-                <button name = 'applyBtn' class="cs-btn w-20" type="submit">Easy Apply</button>
-              {% comment %} <a
+            <div class="apply-form-btns">
+              <button name="applyBtn" class="cs-btn w-20" type="submit">
+                Easy Apply
+              </button>
+              {% comment %}
+              <a
                 class="search-programs"
                 title="Universities"
                 href="{% url 'scholarships' %}"
@@ -74,7 +53,8 @@
                 <img
                   src="{% static 'assets/css/icons/others/select-arrow.svg' %}"
                   alt="Search Programs"
-              /></a> {% endcomment %}
+              /></a>
+              {% endcomment %}
             </div>
           </form>
         </div>
@@ -86,30 +66,29 @@
       <div class="row align-items-center">
         <div class="col-12 col-lg-6 col-xl-6">
           <div class="about-us-img">
-            <img src="{% static 'assets/img/about-us-img.png' %}" alt="About Us" />
+            <img
+              src="{% static 'assets/img/about-us-img.png' %}"
+              alt="About Us"
+            />
           </div>
         </div>
         <div class="col-12 col-lg-6 col-xl-6">
           <h2 class="section-title">About Us</h2>
           <p class="about-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nulla
-            turpis, mattis sed tempus ut, cursus sed arcu. Donec blandit sem
-            metus, vitae posuere velit auctor vel. Nunc hendrerit, dui viverra
-            malesuada mollis, leo tellus hendrerit justo, sed malesuada massa
-            tellus a neque. Quisque tincidunt lacinia tellus id aliquet. Donec
-            gravida tincidunt erat, in eleifend leo ultrices non. Fusce at massa
-            dui. Quisque elementum ac augue semper porttitor. Nunc nec nulla
-            est. Maecenas vitae ultricies dolor, et dignissim lorem. Donec ac
-            ante sapien. Morbi ullamcorper tempus orci at congue. Mauris finibus
-            diam nec facilisis blandit.<span
-              >Integer sollicitudin quam sit amet ante ullamcorper, vitae
-              tincidunt nulla ultrices. Nulla at mollis lorem. Sed vel erat
-              dolor. Aenean convallis ligula ex, tempus blandit libero
-              pellentesque in. Praesent vitae libero tellus. Duis molestie quam
-              nec eleifend sollicitudin. Suspendisse iaculis nulla porta
-              tristique scelerisque. Interdum et malesuada fames ac ante ipsum
-              primis in faucibus. Etiam aliquam cursus pellentesque. Donec id
-              ornare lacus, vitae varius felis.</span
+            Eduactive is a user-friendly platform that uses special algorithm to
+            help students find the perfect university programs for them. We have
+            a big database that includes the top 1000 universities, and we make
+            sure to keep this information up-to-date. Our goal is to help
+            students make smart choices about their education and future
+            careers. We do this by matching students with university programs
+            based on their backgrounds, interests, budgets, locations, and
+            career goals. This way, students can explore a list of programs that
+            are just right for them.<span
+              >On our platform, students can find important details about
+              universities and their programs, like tuition fees, how long the
+              programs are, what it takes to get in, and rankings. We also cover
+              a wide range of subjects, so everyone can find something they're
+              interested in.</span
             >
           </p>
         </div>
@@ -185,7 +164,10 @@
             <a class="text-decoration-none" href="blog.html">
               <div class="landing-blog-item">
                 <div class="landing-blog-img">
-                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <img
+                    src="{% static 'assets/img/blog-item-img.jpg' %}"
+                    alt="Eiffel Tower"
+                  />
                   <span class="landing-blog-category">Category 1</span>
                 </div>
                 <div class="landing-blog-details">
@@ -198,7 +180,9 @@
                   </p>
                   <a class="text-decoration-none" href="#"
                     >Learn More
-                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                    <img
+                      src="{% static 'assets/css/icons/others/right-arrow.svg' %}"
+                      alt=""
                   /></a>
                 </div>
               </div>
@@ -208,7 +192,10 @@
             <a class="text-decoration-none" href="blog.html">
               <div class="landing-blog-item">
                 <div class="landing-blog-img">
-                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <img
+                    src="{% static 'assets/img/blog-item-img.jpg' %}"
+                    alt="Eiffel Tower"
+                  />
                   <span class="landing-blog-category">Category 1</span>
                 </div>
                 <div class="landing-blog-details">
@@ -221,7 +208,9 @@
                   </p>
                   <a class="text-decoration-none" href="#"
                     >Learn More
-                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                    <img
+                      src="{% static 'assets/css/icons/others/right-arrow.svg' %}"
+                      alt=""
                   /></a>
                 </div>
               </div>
@@ -231,7 +220,10 @@
             <a class="text-decoration-none" href="blog.html">
               <div class="landing-blog-item">
                 <div class="landing-blog-img">
-                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <img
+                    src="{% static 'assets/img/blog-item-img.jpg' %}"
+                    alt="Eiffel Tower"
+                  />
                   <span class="landing-blog-category">Category 1</span>
                 </div>
                 <div class="landing-blog-details">
@@ -244,7 +236,9 @@
                   </p>
                   <a class="text-decoration-none" href="#"
                     >Learn More
-                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                    <img
+                      src="{% static 'assets/css/icons/others/right-arrow.svg' %}"
+                      alt=""
                   /></a>
                 </div>
               </div>
@@ -254,7 +248,10 @@
             <a class="text-decoration-none" href="blog.html">
               <div class="landing-blog-item">
                 <div class="landing-blog-img">
-                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <img
+                    src="{% static 'assets/img/blog-item-img.jpg' %}"
+                    alt="Eiffel Tower"
+                  />
                   <span class="landing-blog-category">Category 1</span>
                 </div>
                 <div class="landing-blog-details">
@@ -267,7 +264,9 @@
                   </p>
                   <a class="text-decoration-none" href="#"
                     >Learn More
-                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                    <img
+                      src="{% static 'assets/css/icons/others/right-arrow.svg' %}"
+                      alt=""
                   /></a>
                 </div>
               </div>
@@ -277,7 +276,10 @@
             <a class="text-decoration-none" href="blog.html">
               <div class="landing-blog-item">
                 <div class="landing-blog-img">
-                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <img
+                    src="{% static 'assets/img/blog-item-img.jpg' %}"
+                    alt="Eiffel Tower"
+                  />
                   <span class="landing-blog-category">Category 1</span>
                 </div>
                 <div class="landing-blog-details">
@@ -290,7 +292,9 @@
                   </p>
                   <a class="text-decoration-none" href="#"
                     >Learn More
-                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                    <img
+                      src="{% static 'assets/css/icons/others/right-arrow.svg' %}"
+                      alt=""
                   /></a>
                 </div>
               </div>
@@ -300,7 +304,10 @@
             <a class="text-decoration-none" href="blog.html">
               <div class="landing-blog-item">
                 <div class="landing-blog-img">
-                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <img
+                    src="{% static 'assets/img/blog-item-img.jpg' %}"
+                    alt="Eiffel Tower"
+                  />
                   <span class="landing-blog-category">Category 1</span>
                 </div>
                 <div class="landing-blog-details">
@@ -313,7 +320,9 @@
                   </p>
                   <a class="text-decoration-none" href="#"
                     >Learn More
-                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                    <img
+                      src="{% static 'assets/css/icons/others/right-arrow.svg' %}"
+                      alt=""
                   /></a>
                 </div>
               </div>
@@ -323,7 +332,10 @@
             <a class="text-decoration-none" href="blog.html">
               <div class="landing-blog-item">
                 <div class="landing-blog-img">
-                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <img
+                    src="{% static 'assets/img/blog-item-img.jpg' %}"
+                    alt="Eiffel Tower"
+                  />
                   <span class="landing-blog-category">Category 1</span>
                 </div>
                 <div class="landing-blog-details">
@@ -336,7 +348,9 @@
                   </p>
                   <a class="text-decoration-none" href="#"
                     >Learn More
-                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                    <img
+                      src="{% static 'assets/css/icons/others/right-arrow.svg' %}"
+                      alt=""
                   /></a>
                 </div>
               </div>
@@ -346,7 +360,10 @@
             <a class="text-decoration-none" href="blog.html">
               <div class="landing-blog-item">
                 <div class="landing-blog-img">
-                  <img src="{% static 'assets/img/blog-item-img.jpg' %}" alt="Eiffel Tower" />
+                  <img
+                    src="{% static 'assets/img/blog-item-img.jpg' %}"
+                    alt="Eiffel Tower"
+                  />
                   <span class="landing-blog-category">Category 1</span>
                 </div>
                 <div class="landing-blog-details">
@@ -359,7 +376,9 @@
                   </p>
                   <a class="text-decoration-none" href="#"
                     >Learn More
-                    <img src="{% static 'assets/css/icons/others/right-arrow.svg' %}" alt=""
+                    <img
+                      src="{% static 'assets/css/icons/others/right-arrow.svg' %}"
+                      alt=""
                   /></a>
                 </div>
               </div>
@@ -377,53 +396,46 @@
       <div class="row">
         <div class="col-12 col-lg-6 order-lg-1">
           <div class="contact-us-image">
-            <img src="{% static 'assets/img/contact-us-animated.gif' %}" alt="" />
+            <img
+              src="{% static 'assets/img/contact-us-animated.gif' %}"
+              alt=""
+            />
           </div>
         </div>
         <div class="col-12 col-lg-6 order-lg-0">
           <div class="contact-us-form">
-            <form name="contactForm" class="contactForm" method='post'>
+            <form name="contactForm" class="contactForm" method="post">
               {% csrf_token %}
               <div
                 class="contact-first-inputs d-flex justify-content-sm-between align-items-sm-center"
               >
-                 <label class="inputLabels" for="firstName"
-                  >First Name
-                  
-                  {{form.first_name}}
-                </label> 
-                
-                
+                <label class="inputLabels" for="firstName"
+                  >First Name {{form.first_name}}
+                </label>
+
                 <label class="inputLabels" for="lastName"
-                  >Last Name
-                  
-                  {{form.last_name}}
-                </label> 
+                  >Last Name {{form.last_name}}
+                </label>
               </div>
               <div
                 class="contact-second-inputs d-flex justify-content-sm-between align-items-sm-center"
               >
-
-              
-
                 <label class="inputLabels" for="email"
-                  >Email
-                  {{form.email}}
+                  >Email {{form.email}}
                 </label>
                 <label class="inputLabels" for="phoneNumber"
-                  >Phone Number
-                  {{form.number}}
-                </label> 
+                  >Phone Number {{form.number}}
+                </label>
               </div>
               <div class="contact-third-inputs">
                 <label class="textareaLabel" for="message"
-                  >Message
-                  {{form.message}}
-                </label> 
-
+                  >Message {{form.message}}
+                </label>
               </div>
               <div class="contact-btn-sumbit">
-                <button name='contactBtn' class="cs-btn w-100" type="submit">Submit</button>
+                <button name="contactBtn" class="cs-btn w-100" type="submit">
+                  Submit
+                </button>
                 <span>Thanks for submitting✌</span>
               </div>
             </form>

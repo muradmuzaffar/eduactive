@@ -35,7 +35,7 @@ class AdmissionForm(forms.Form):
     degree = forms.ChoiceField(widget=forms.Select(attrs={
         'placeholder': 'select Degree',
         'class':"d-block cs-input mt-2",
-    }), choices=DEGREE_CHOICES)
+    }), choices=DEGREE_CHOICES, initial='Master')
 
     region = forms.ChoiceField(widget=forms.Select(attrs={
         'placeholder': 'select Degree',

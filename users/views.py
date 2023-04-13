@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserCreateForm, LoginForm,ProfileForm,UpdateUserForm
 from .models import Profile
@@ -29,10 +29,13 @@ def auth(request):
             profile = Profile.objects.create(user = user,first_name = user.first_name,
                                              last_name = user.last_name,email = user.email,
             )
+            
+            messages.success(request, 'Registration successful. Please complete your profile')
             login(request,user=user)
-            return redirect('landing')
+            return HttpResponseRedirect(reverse_lazy('landing'))
         else:
             messages.warning(request, 'ERROR!')
+            return HttpResponseRedirect(reverse_lazy('landing'))
         if form.is_valid():
             username = request.POST.get('username')
             password = request.POST.get('password')
