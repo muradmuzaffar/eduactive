@@ -67,14 +67,16 @@ const swiper = new Swiper('.main-swiper', {
 // Show password
 
 const showPassword = (button, input) => {
+  const buttonElement = document.querySelector(button);
+  const inputElement = document.querySelector(input);
 
-  $(button).click(function () {
-    if ($(input).attr('type') == 'password') {
-      $(input).attr('type', 'text');
+  buttonElement.addEventListener('click', () => {
+    if (inputElement.getAttribute('type') == 'password') {
+      inputElement.setAttribute('type', 'text');
     } else {
-      $(input).attr('type', 'password');
+      inputElement.setAttribute('type', 'password');
     }
-  });
+  })
 }
 
 showPassword('#showHidePass', '#id_password')
