@@ -116,17 +116,28 @@ def apply_form(request):
 
 def apply_done(request):
     return render(request,'apply-done.html')
-
+from .utils import Paginations
 def universities(request):
     universities = University.objects.all()
     filter_university = ListingFiLtersUniversity(request.GET, queryset=universities)
+    universities_1, custom_range= Paginations(request,filter_university.qs)
     
-
-
+    if request.method == 'GET':
+        
+        filter_degree=request.GET.get('degree')
+        filter_region=request.GET.get('region')
+        filter_fee_waiver=request.GET.get('fee_waiver')
+        filter_study_field=request.GET.get('study_field')
 
     context  = {
         'universities':universities,
         'filter_university':filter_university,
+        'universities_1':universities_1,
+        'custom_range':custom_range,
+        'filter_degree':filter_degree,
+        'filter_region':filter_region,
+        'filter_fee_waiver':filter_fee_waiver,
+        'filter_study_field':filter_study_field,
     }
     return render(request,'universities.html',context)
 
@@ -167,7 +178,7 @@ def detail(request, id):
 
 def filters(request,):
     universitys = University.objects.all()
-    filters = ListingFiLters(request.GET, queryset=universitys)
+    filters = ListingFiLtersUniversity(request.GET, queryset=universitys)
     # university = get_object_or_404(University, id=id)
 
     context = {

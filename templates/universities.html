@@ -20,7 +20,6 @@
                 <div class="degree-filter filterization">
                   
                   <form method='GET'>
-                    {% csrf_token %}
                     <span class="filter-title">Degree</span>
                     {% for degree in filter_university.form.degree %}
                     <div class="form-check d-flex align-items-center"> 
@@ -208,7 +207,7 @@
                     </div>
                     <div class="study-programs-list">
 
-                      {% for university in filter_university.qs %}
+                      {% for university in universities_1 %}
                       <a class="text-decoration-none" href="{%url 'detail' university.id%}">
                         <div class="study-program-list-item">
                           <h4 class="program-title">
@@ -246,6 +245,7 @@
                       {% endfor %}
                       
                     </div>
+                    {% include "partials/__pagination.html" with post=universities_1 %}
               </div>
               {% comment %} <div class="study-program-list-block">
                 <div class="row align-items-center">

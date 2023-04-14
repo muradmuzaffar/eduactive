@@ -2170,6 +2170,20 @@ body {
   color: var(--gray);
 }
 
+.page-link{
+  color: #e85d04;
+  width: 40px;
+  height: 40px;
+}
+.page-link.active{
+  background-color: #e85d04;
+  border-color: #e85d04;
+  color: #fff;
+}
+.page-link:not(.active):hover{
+  color:#e85d04
+}
+
 @media screen and (max-width: 1399.98px) {
   .university-apply {
     background-position: center right;
