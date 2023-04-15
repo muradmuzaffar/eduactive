@@ -28,17 +28,21 @@
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                         <div class="login-social-media d-flex align-items-md-center flex-md-wrap">
-                            <button type="button" class="login-google d-flex align-items-center">
+                            {% comment %} <button type="button" class="login-google d-flex align-items-center">
                                 <img src="{% static 'assets/css/icons/others/google.svg' %}" alt="Log in with Google">
                                 <span>Sign in with Google</span>
                             </button>
                             <button type="button" class="login-facebook d-flex align-items-center">
                                 <img src="{% static 'assets/css/icons/others/facebook1.svg' %}" alt="Log in with Facebook">
                                 <span>Sign in with Facebook</span>
-                            </button>
+                            </button> {% endcomment %}
+                            
                         </div>
                         <form method='post' class="needs-validation sign-in-validation" novalidate>
                           {% csrf_token %}
+                            {% if  form.errors %}
+                            <p><strong>{{form.errors}}</strong></p>
+                            {% endif %}
                             <div class="logmailInput mb-4">
                               <label for="logMailid" class="form-label">Username</label>
                               {% comment %} <input type="text" class="form-control cs-input" id="logMailid" placeholder="username" required> {% endcomment %}

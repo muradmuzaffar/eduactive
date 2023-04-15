@@ -35,7 +35,7 @@ def auth(request):
             return HttpResponseRedirect(reverse_lazy('landing'))
         else:
             messages.warning(request, 'ERROR!')
-            return HttpResponseRedirect(reverse_lazy('landing'))
+            return redirect('authenticate')
         if form.is_valid():
             username = request.POST.get('username')
             password = request.POST.get('password')
