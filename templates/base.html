@@ -11,6 +11,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'assets/css/icons/favicons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'assets/css/icons/favicons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'assets/css/icons/favicons/favicon-16x16.png' %}">
+      <!------------- Alertify CSS -------------->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+  <!-------x----- Alertify CSS --------x------>
     <!-- Plugins -->
     <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}">
     <!-- Style CSS -->
@@ -80,6 +84,15 @@
      </div>
   </div>
 </footer>
+<!--------------- Alertify Javascript-------------->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<!---x------------ Alertify Javascript-------x---->
+<script type="text/javascript">
+  {% for message in messages %}
+  alertify.set('notifier', 'position', 'top-center');
+  alertify.{{ message.tags }} ('{{message}}');
+  {% endfor %}
+</script>
 <script src="{% static 'assets/js/plugins.min.js' %}"></script>
 <script src="{% static 'assets/js/scripts.js' %}?{% now \"U\" %}"></script>
 </body>
