@@ -52,7 +52,7 @@
                               <div class="input-group has-validation">
                                 {% comment %} <input type="password" placeholder="Enter Password" class="form-control  cs-input passborder" id="logPassId" aria-describedby="showHidePass" required> {% endcomment %}
                                 {{form.password}}
-                                <button class="btn btn-outline-secondary" type="button" id="showHidePass"><img src="{% static 'assets/css/icons/others/eye.svg' %}" alt="Show Hide Password"></button>
+                                <button class="btn btn-outline-secondary" type="button" id="showHidePass" onclick="showHidePassword(this)"><img src="{% static 'assets/css/icons/others/eye.svg' %}" alt="Show Hide Password"></button>
                                 <div class="invalid-feedback">
                                     Please fill in the field!
                                 </div>
@@ -104,7 +104,7 @@
                                 <div class="input-group has-validation">
                                   {% comment %} <input type="password" placeholder="Enter Password" class="form-control  cs-input passborder" id="logPassId" aria-describedby="showHidePass2" required> {% endcomment %}
                                   {{form1.password1}}
-                                  <button class="btn btn-outline-secondary" type="button" id="showHidePass2"><img src="{% static 'assets/css/icons/others/eye.svg' %}" alt="Show Hide Password"></button>
+                                  <button class="btn btn-outline-secondary" type="button" id="showHidePass2" onclick="showHidePassword(this)"><img src="{% static 'assets/css/icons/others/eye.svg' %}" alt="Show Hide Password"></button>
                                   <div class="invalid-feedback">
                                       Please fill in the field!
                                   </div>
