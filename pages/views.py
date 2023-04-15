@@ -5,6 +5,7 @@ from .forms import AdmissionForm,ContactForm,ApplyForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import render
+from .utils import Paginations
 
 
 def landing(request):
@@ -116,7 +117,8 @@ def apply_form(request):
 
 def apply_done(request):
     return render(request,'apply-done.html')
-from .utils import Paginations
+
+
 def universities(request):
     universities = University.objects.all()
     filter_university = ListingFiLtersUniversity(request.GET, queryset=universities)

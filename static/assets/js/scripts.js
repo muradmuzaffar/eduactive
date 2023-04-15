@@ -66,18 +66,11 @@ const swiper = new Swiper('.main-swiper', {
 
 // Show password
 
-const showPassword = (button, input) => {
-  const buttonElement = document.querySelector(button);
-  const inputElement = document.querySelector(input);
-
-  buttonElement.addEventListener('click', () => {
-    if (inputElement.getAttribute('type') == 'password') {
-      inputElement.setAttribute('type', 'text');
-    } else {
-      inputElement.setAttribute('type', 'password');
-    }
-  })
+const showHidePassword=(e)=>{
+  const input=e.previousElementSibling;
+  if(input.type=="password"){
+    input.type="text"; 
+  }else{
+    input.type="password";
+  }
 }
-
-showPassword('#showHidePass', '#id_password')
-showPassword('#showHidePass2', '#id_password1')
