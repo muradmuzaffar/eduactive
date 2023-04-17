@@ -36,6 +36,8 @@ def auth(request):
         else:
             messages.warning(request, 'ERROR!')
             return redirect('authenticate')
+        
+        
         if form.is_valid():
             username = request.POST.get('username')
             password = request.POST.get('password')
