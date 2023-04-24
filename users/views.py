@@ -34,7 +34,7 @@ def auth(request):
             login(request,user=user)
             return HttpResponseRedirect(reverse_lazy('landing'))
         else:
-            messages.warning(request, 'ERROR!')
+            messages.warning(request, 'Something went wrong! Please try again')
             return redirect('authenticate')
         
         

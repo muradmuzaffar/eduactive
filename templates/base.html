@@ -48,9 +48,89 @@
                   </li>
                 </ul>
                 {% if user.is_authenticated %}
+
+                <style>
+                
+                
+                  .menu {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    justify-content: space-between;
+                  }
+                  
+                  .menu li {
+                    position: relative;
+                  }
+                  
+                  .menu li a {
+                    display: block;
+                    padding: 10px;
+                    color: white;
+                    text-decoration: none;
+                  }
+                  
+                  .menu li:hover {
+                    background-color: white;
+                  }
+                  
+                  .menu li:hover > a {
+                    color: orange;
+                  }
+                  
+                  .dropdown {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    background-color: white;
+                    display: none;
+                    padding: 0;
+                    margin: 0;
+                    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+                    list-style: none;
+                    width:150px
+
+                  }
+                  
+                  .dropdown li {
+                    width: 100%;
+                  }
+                  
+                  .dropdown li a {
+                    display: block;
+                    padding: 10px;
+                    color: black;
+                    text-decoration: none;
+                  }
+                  
+                  
+                  
+                  .menu li:hover .dropdown {
+                    display: block;
+                  }</style>
+
+                
+
+              <ul class="menu">
+                <li>
                   <a class="text-decoration-none profile-link" title="Profile" href="{% url 'profile' %}">
-                     <img src="{% static 'assets/css/icons/others/profile.svg' %}" alt="Profile">
-                   </a>
+                    <img src="{% static 'assets/css/icons/others/profile.svg' %}" alt="Profile">
+                  </a>                  
+                  <ul class="dropdown">
+                    {% comment %} <li><a href="{% url 'log_out' %}">Cv and ML</a></li>
+                    <hr> {% endcomment %}
+                    <li><a href="{% url 'log_out' %}">Logout</a></li>
+
+                  </ul>
+                </li>
+              </ul>
+
+              
+
+
+
+                  
 
                 {% else %}
                 <a class="cs-btn login-link" href="{% url 'authenticate'%}" title="Login">Login</a>
