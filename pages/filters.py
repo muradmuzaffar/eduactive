@@ -9,13 +9,13 @@ class ListingFiLtersUniversity(django_filters.FilterSet):
         choices = DEGREE_CHOICES,
         widget = forms.CheckboxSelectMultiple(attrs={'class':'form-check-input', 'id':'degree'} ,))
     
-    region = django_filters.MultipleChoiceFilter(
-        choices = REGION_CHOICES,
-        widget = forms.CheckboxSelectMultiple(attrs={'class':'form-check-input', 'id':'degree'} ,))
+    # region = django_filters.MultipleChoiceFilter(
+    #     choices = REGION_CHOICES,
+    #     widget = forms.CheckboxSelectMultiple(attrs={'class':'form-check-input', 'id':'degree'} ,))
     
-    fee_waiver = django_filters.MultipleChoiceFilter(
-        choices = VAIWER_CHOICES,
-        widget = forms.CheckboxSelectMultiple(attrs={'class':'form-check-input', 'id':'degree'} ,))
+    # fee_waiver = django_filters.MultipleChoiceFilter(
+    #     choices = VAIWER_CHOICES,
+    #     widget = forms.CheckboxSelectMultiple(attrs={'class':'form-check-input', 'id':'degree'} ,))
     
     study_field = django_filters.MultipleChoiceFilter(
         choices = FIELD_CHOICES,
@@ -23,8 +23,8 @@ class ListingFiLtersUniversity(django_filters.FilterSet):
     class Meta:
         model = University
         fields = {
-            'fee_waiver': ['exact'],
-            'region':  ['exact'],
+            # 'fee_waiver': ['exact'],
+            # 'region':  ['exact'],
             'degree':  ['exact'],
             'study_field':  ['exact'],
         }

@@ -111,31 +111,38 @@ class Scholarship(models.Model):
 class University(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     qs_rank = models.CharField(max_length=50, blank=True, null=True)
+    qs_id= models.CharField(max_length=50, blank=True, null=True)
+
+
     program = models.CharField(max_length=100, blank=True, null=True)
     study_field = models.CharField(max_length=100, blank=True, null=True,choices=FIELD_CHOICES)
     degree = models.CharField(max_length=100, blank=True, null=True,choices=DEGREE_CHOICES)
+
     study_duration = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True, null=True)
-    other_email = models.EmailField(max_length=254, blank=True, null=True)
+    # other_email = models.EmailField(max_length=254, blank=True, null=True)
+
     gre = models.CharField(max_length=100, blank=True, null=True)
     gpa = models.CharField(max_length=100, blank=True, null=True)
     ielts = models.CharField(max_length=100, blank=True, null=True)
     toefl = models.CharField(max_length=100, blank=True, null=True)
     gmat = models.CharField(max_length=100, blank=True, null=True)
+
     fee = models.CharField(max_length=100, blank=True, null=True)
-    fee_waiver = models.CharField(max_length=100, blank=True, null=True, choices=VAIWER_CHOICES)
+    # fee_waiver = models.CharField(max_length=100, blank=True, null=True, choices=VAIWER_CHOICES)
     tution_fee = models.CharField(max_length=100, blank=True, null=True)
-    region = models.CharField(max_length=100, blank=True, null=True,choices=REGION_CHOICES)
-    state = models.CharField(max_length=100, blank=True, null=True)
-    city = models.CharField(max_length=100, blank=True, null=True)
-    city_living_cost = models.CharField(max_length=100, blank=True, null=True)
-    acceptance_rate = models.CharField(max_length=100, blank=True, null=True)
-    
-    
-    graduation_rate = models.CharField(max_length=100, blank=True, null=True)  
     deadline = models.CharField(max_length=500, blank=True, null=True)
-    result = models.CharField(max_length=500, blank=True, null=True)
-    link = models.CharField(max_length=200, blank=True, null=True)
+
+    country = models.CharField(max_length=100, blank=True, null=True,choices=REGION_CHOICES)
+    state_city = models.CharField(max_length=100, blank=True, null=True)
+    # city = models.CharField(max_length=100, blank=True, null=True)
+    city_living_cost = models.CharField(max_length=100, blank=True, null=True)
+    # acceptance_rate = models.CharField(max_length=100, blank=True, null=True)
+    
+    
+    # graduation_rate = models.CharField(max_length=100, blank=True, null=True)  
+    # result = models.CharField(max_length=500, blank=True, null=True)
+    # link = models.CharField(max_length=200, blank=True, null=True)
     bio = models.CharField(max_length=3000, blank=True, null=True)
 
 

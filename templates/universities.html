@@ -29,7 +29,7 @@
                     </div>
                     {% endfor %}<br>
 
-                    <span class="filter-title">Region</span>
+                    {% comment %} <span class="filter-title">Region</span>
                     {% for  region in filter_university.form.region  %}
                     <div class="form-check d-flex align-items-center"> 
                       {{region.tag}} 
@@ -48,7 +48,7 @@
                       </label>
                     </div>
                     
-                    {% endfor %}<br>
+                    {% endfor %}<br> {% endcomment %}
 
                     <span class="filter-title">Study Field</span>
                     {% for  study_field in filter_university.form.study_field  %}
